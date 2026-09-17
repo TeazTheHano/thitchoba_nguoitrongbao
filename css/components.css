@@ -1,0 +1,78 @@
+.gradient {
+    background: linear-gradient(90deg, #866b57 0%, #b8a38c 100%);
+}
+
+.text-body {
+    font-size: 16px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.text-subTitle {
+    font-size: 24px;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    line-height: 135%;
+}
+
+.text-button {
+    font-size: 16px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.text-title {
+    font-size: 48px;
+    font-family: Proxima Nova, sans-serif;
+    font-weight: 700;
+    line-height: 135%;
+}
+
+.text-subTitleB {
+    font-size: 24px;
+    font-family: Proxima Nova, sans-serif;
+    font-weight: 700;
+    line-height: 135%;
+}
+
+.text-smallText {
+    font-size: 12px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 165%;
+}
+
+.text-0 {
+    font-size: 84px;
+    font-family: Proxima Nova, sans-serif;
+    font-weight: 700;
+    letter-spacing: 4px;
+    line-height: 130%;
+    text-decoration: uppercase;
+}
+
+.content-p-H {
+    padding: var(--ui-spacing-xl);
+}
+
+
+
+.button-type-1:hover {
+    cursor: pointer;
+}
+
+.button-type-1 {
+    position: relative;
+}
+
+.button-type-1:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #ffffff1a;
+    pointer-events: none;
+    /* Không che thao tác click vào label */
+}
+

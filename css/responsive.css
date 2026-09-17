@@ -1,0 +1,65 @@
+@media (max-width: 768px) {
+    .ui-mobile-hide {
+        display: none !important;
+    }
+
+    .ui-mobile-show {
+        display: block !important;
+    }
+
+    .ui-mobile-flexWrap {
+        flex-wrap: wrap !important;
+    }
+
+    .ui-mobile-flexColumn {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Standard responsive font scales mapping to member_platform variables */
+    h1,
+    .p-ref-h1 {
+        font-size: var(--ui-font-size-h2) !important;
+        line-height: var(--ui-line-height-h2) !important;
+    }
+
+    h2,
+    .p-ref-h2 {
+        font-size: var(--ui-font-size-h3) !important;
+        line-height: var(--ui-line-height-h3) !important;
+    }
+
+    h3,
+    .p-ref-h3 {
+        font-size: var(--ui-font-size-h4) !important;
+        line-height: var(--ui-line-height-h4) !important;
+    }
+
+    #section_header #section_header_bottom {
+        flex-direction: column-reverse;
+    }
+
+    #section_header #section_header_bottom .right {
+        text-align: left;
+    }
+}
+
+[id*="content"] {
+    padding: calc(var(--ui-spacing-11xl) * 1.5) var(--ui-spacing-xl) !important;
+}
+
+@media (min-width: 768px) {
+    .content-p-H {
+        padding: var(--ui-spacing-7xl);
+    }
+}
+
+@media (max-width: 1400px) {
+    .ui-1440-hide {
+        display: none !important;
+    }
+
+    .ui-1440-show {
+        display: block !important;
+    }
+}

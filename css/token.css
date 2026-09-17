@@ -1,0 +1,93 @@
+/* d:\Gipyxl_Local\UOB\css\token.css */
+:root {
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+
+  /* Semantic Colors (Light) */
+  --Black: #000000FF;
+  --White: #FFFFFFFF;
+  --Gray: #888888FF;
+  --Button: #926E4AFF;
+  --Stroke: #A5846FFF;
+  --LightBrown: #EEE8DAFF;
+  --Brown: #85735AFF;
+  --DarkBrown: #836954FF;
+
+  /* BorderRadius */
+  --ui-radius-xs: 4px;
+  --ui-radius-sm: 8px;
+  --ui-radius-md: 12px;
+  --ui-radius-lg: 16px;
+  --ui-radius-xl: 24px;
+  --ui-radius-full: 9999px;
+
+  /* Spacings */
+  --ui-spacing-2xs: 4px;
+  --ui-spacing-xs: 8px;
+  --ui-spacing-sm: 12px;
+  --ui-spacing-md: 16px;
+  --ui-spacing-lg: 20px;
+  --ui-spacing-xl: 24px;
+  --ui-spacing-2xl: 28px;
+  --ui-spacing-3xl: 32px;
+  --ui-spacing-4xl: 36px;
+  --ui-spacing-5xl: 40px;
+  --ui-spacing-6xl: 44px;
+  --ui-spacing-7xl: 48px;
+  --ui-spacing-8xl: 52px;
+  --ui-spacing-9xl: 56px;
+  --ui-spacing-10xl: 60px;
+  --ui-spacing-11xl: 64px;
+  --ui-spacing-12xl: 68px;
+  --ui-spacing-13xl: 72px;
+  --ui-spacing-14xl: 76px;
+  --ui-spacing-15xl: 80px;
+  --ui-spacing-full: 9999px;
+
+  /* Fonts */
+  --ui-font-family: "Inter", sans-serif;
+  --ui-font-family-display: "Proxima Nova", sans-serif;
+
+  --ui-font-size-base: 16px;
+  --ui-font-size-h1: 40px;
+  --ui-font-size-h2: 32px;
+  --ui-font-size-h3: 24px;
+  --ui-font-size-h4: 20px;
+  --ui-font-size-h5: 18px;
+  --ui-font-size-h6: 16px;
+  --ui-font-size-body: 16px;
+  --ui-font-size-label: 14px;
+  --ui-font-size-button: 14px;
+  --ui-font-size-caption: 12px;
+  --ui-font-size-sm: 14px;
+  --ui-font-size-md: 16px;
+  --ui-font-size-lg: 20px;
+
+  --ui-line-height-h1: 1.2;
+  --ui-line-height-h2: 1.25;
+  --ui-line-height-h3: 1.3;
+  --ui-line-height-h4: 1.35;
+  --ui-line-height-h5: 1.4;
+  --ui-line-height-h6: 1.45;
+  --ui-line-height-body: 1.5;
+  --ui-line-height-label: 1.55;
+  --ui-line-height-button: 1.6;
+  --ui-line-height-caption: 1.65;
+
+  --ui-font-weight-normal: 400;
+  --ui-font-weight-medium: 500;
+  --ui-font-weight-semibold: 600;
+  --ui-font-weight-bold: 700;
+
+  /* Shadows */
+  --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --ui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --ui-shadow-lg: 0 8px 16px -2px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  /* Transition */
+  --ui-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

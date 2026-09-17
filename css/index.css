@@ -1,0 +1,18 @@
+@layer tokens, base, layout, components, responsive;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+/* TOKEN */
+@import "token.css" layer(tokens);
+
+/* BASE */
+@import "global.css" layer(base);
+
+/* LAYOUT */
+@import "layout.css" layer(layout);
+
+/* COMPONENT */
+@import "components.css" layer(components);
+
+/* RESPONSIVE */
+@import "responsive.css" layer(responsive);

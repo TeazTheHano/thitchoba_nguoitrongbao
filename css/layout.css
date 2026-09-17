@@ -1,0 +1,5 @@
+section {
+    width: 100%;
+    max-width: var(--breakpoint-2xl);
+}
+
