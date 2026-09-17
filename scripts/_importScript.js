@@ -270,6 +270,15 @@ const hanhtrinhHomePage = {
     },
   ],
 };
+const hanhtrinhPhongChoCaoCapPage = {
+  template: "pages/hanhtrinh_phongchocaocap.html",
+  sections: [],
+};
+
+const detailshElitePage = {
+  template: "pages/detail-shElite.html",
+  sections: [],
+};
 // 9. Attach Routes
 App.routes = [
   {
@@ -279,6 +288,14 @@ App.routes = [
   {
     path: "#/hanhtrinh-home",
     page: hanhtrinhHomePage,
+  },
+  {
+    path: "#/hanhtrinh-phongchocaocap",
+    page: hanhtrinhPhongChoCaoCapPage,
+  },
+  {
+    path: "#/detail-shElite",
+    page: detailshElitePage,
   },
 ];
 

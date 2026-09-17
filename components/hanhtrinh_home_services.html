@@ -1,692 +1,520 @@
-<div>
-    <div>
-        <style>
-        /* =========================================================
-           ELITE SERVICE - LIST
-           ========================================================= */
+<style>
+    /* =========================================================
+   ELITE SERVICE - LIST
+   ========================================================= */
 
-        .elite-service__list {
-            width: 100%;
-            background: var(--White);
-        }
+.elite-service__list {
+    width: 100%;
+    background: var(--LightBrown);
+}
 
 
-        /* =========================================================
-           ITEM
-           ========================================================= */
+/* =========================================================
+   ITEM
+   - 2 cột desktop/tablet
+   - Ảnh tự giãn theo chiều cao content
+   ========================================================= */
 
-        .elite-service__item {
-            display: grid;
-            grid-template-columns: 45% 55%;
+.elite-service__item {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    align-items: stretch;
 
-            width: 100%;
-            min-height: 300px;
+    width: 100%;
+    min-height: 300px;
 
-            overflow: hidden;
+    overflow: hidden;
 
-            background: var(--White);
-            border-bottom: 1px solid var(--Stroke);
-        }
+    background: var(--White);
+    border-bottom: 1px solid var(--Stroke);
+}
 
-        .elite-service__item:last-child {
-            border-bottom: none;
-        }
+.elite-service__item:last-child {
+    border-bottom: none;
+}
 
 
-        /* =========================================================
-           IMAGE
-           ========================================================= */
+/* =========================================================
+   IMAGE
+   - Cao theo item
+   - Không fix height
+   ========================================================= */
 
-        .elite-service__image {
-            width: 100%;
-            height: 300px;
+.elite-service__image {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
 
-            overflow: hidden;
-        }
+    overflow: hidden;
+}
 
-        .elite-service__image img {
-            display: block;
+.elite-service__image img {
+    display: block;
 
-            width: 100%;
-            height: 100%;
+    width: 100%;
+    height: 100%;
 
-            object-fit: cover;
-            object-position: center;
+    object-fit: cover;
+    object-position: center;
 
-            transition: var(--ui-transition);
-        }
+    transition: var(--ui-transition);
+}
 
-        .elite-service__item:hover
-        .elite-service__image img {
-            transform: scale(1.02);
-        }
+.elite-service__item:hover .elite-service__image img {
+    transform: scale(1.02);
+}
 
 
-        /* =========================================================
-           CONTENT
-           ========================================================= */
+/* =========================================================
+   CONTENT
+   ========================================================= */
 
-        .elite-service__content {
-            display: flex;
-            flex-direction: column;
+.elite-service__content {
+    display: flex;
+    flex-direction: column;
 
-            justify-content: center;
-            align-items: flex-start;
+    justify-content: center;
+    align-items: flex-start;
 
-            min-width: 0;
+    gap: var(--ui-spacing-lg);
 
-            padding: var(--ui-spacing-3xl) var(--ui-spacing-4xl);
-        }
+    min-width: 0;
 
+    padding: var(--ui-spacing-3xl) var(--ui-spacing-4xl);
+}
 
-        /* =========================================================
-           TITLE
-           ========================================================= */
 
-        .elite-service__title {
-            margin: 0 0 var(--ui-spacing-2xs);
+/* =========================================================
+   TITLE
+   ========================================================= */
 
-            font-family: var(--ui-font-family-display);
-            font-size: var(--ui-font-size-h4);
-            line-height: var(--ui-line-height-h4);
-            font-weight: var(--ui-font-weight-bold);
+.elite-service__title {
+    margin: 0 0 var(--ui-spacing-2xs);
 
-            color: var(--Black);
-        }
+    font-family: var(--ui-font-family-display);
+    font-size: var(--ui-font-size-h1);
+    line-height: var(--ui-line-height-h1);
+    font-weight: var(--ui-font-weight-bold);
 
+    color: var(--Black);
+}
 
-        /* =========================================================
-           PRICE
-           ========================================================= */
 
-        .elite-service__price {
-            margin-bottom: var(--ui-spacing-sm);
+/* =========================================================
+   PRICE
+   ========================================================= */
 
-            font-family: var(--ui-font-family);
-            font-size: var(--ui-font-size-caption);
-            line-height: var(--ui-line-height-caption);
-            font-weight: var(--ui-font-weight-semibold);
+.elite-service__price {
+    margin-bottom: var(--ui-spacing-2xs);
 
-            color: var(--Button);
-        }
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-h5);
+    line-height: var(--ui-line-height-h5);
+    font-weight: var(--ui-font-weight-bold);
 
+    color: var(--Button);
+}
 
-        /* =========================================================
-           DESCRIPTION
-           ========================================================= */
 
-        .elite-service__description {
-            width: 100%;
-            max-width: 560px;
+/* =========================================================
+   LOCATION
+   ========================================================= */
 
-            margin: 0 0 var(--ui-spacing-md);
+.elite-service__location {
+    display: inline-flex;
+    align-items: center;
 
-            font-family: var(--ui-font-family);
-            font-size: var(--ui-font-size-caption);
-            line-height: var(--ui-line-height-caption);
-            font-weight: var(--ui-font-weight-normal);
+    gap: var(--ui-spacing-3xs, 4px);
 
-            color: var(--Gray);
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-base);
+    line-height: var(--ui-line-height-caption);
+    font-weight: var(--ui-font-weight-bold);
 
-            /*
-             * Không dùng height: 100%
-             * Không dùng overflow: scroll
-             */
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 6;
-            overflow: hidden;
-        }
+    color: var(--Black);
+}
 
+.elite-service__location svg {
+    flex-shrink: 0;
 
-        /* =========================================================
-           BUTTON
-           ========================================================= */
+    width: 14px;
+    height: 14px;
+}
 
-        .elite-service__button {
-            display: inline-flex;
 
-            align-items: center;
-            justify-content: center;
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
-            gap: var(--ui-spacing-2xs);
+.elite-service__description {
+    width: 100%;
+    max-width: 560px;
 
-            padding: var(--ui-spacing-2xs) var(--ui-spacing-sm);
+    margin: 0 0 var(--ui-spacing-md);
 
-            border-radius: var(--ui-radius-full);
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-base);
+    line-height: var(--ui-line-height-caption);
+    font-weight: var(--ui-font-weight-normal);
 
-            background: var(--Button);
-            color: var(--White);
+    color: var(--Gray);
+}
 
-            font-family: var(--ui-font-family);
-            font-size: var(--ui-font-size-caption);
-            line-height: var(--ui-line-height-button);
-            font-weight: var(--ui-font-weight-medium);
 
-            text-decoration: none;
+/* =========================================================
+   BUTTON
+   - TÁI SỬ DỤNG BUTTON CÓ SẴN
+   - Không tạo style button riêng
+   ========================================================= */
 
-            transition: var(--ui-transition);
-        }
+.elite-service__button {
+    text-decoration: none;
+}
 
-        .elite-service__button span {
-            font-size: var(--ui-font-size-caption);
-            line-height: 1;
-        }
 
-        .elite-service__button:hover {
-            background: var(--DarkBrown);
-            color: var(--White);
-            transform: translateY(-1px);
-        }
+/* =========================================================
+   LAPTOP
+   1024px - 1279px
+   ========================================================= */
 
+@media (min-width: 1024px) and (max-width: 1279px) {
 
-        /* =========================================================
-           LARGE DESKTOP
-           1280px+
-           ========================================================= */
+    .elite-service__item {
+        min-height: 280px;
+    }
 
-        @media (min-width: 1280px) {
+    .elite-service__image {
+        min-height: 280px;
+    }
 
-            .elite-service__item {
-                grid-template-columns: 45% 55%;
-                min-height: 300px;
-            }
+    .elite-service__content {
+        padding: var(--ui-spacing-xl) var(--ui-spacing-2xl);
+    }
 
-            .elite-service__image {
-                height: 300px;
-            }
+    .elite-service__description {
+        margin-bottom: var(--ui-spacing-sm);
+    }
+}
 
-            .elite-service__content {
-                padding: var(--ui-spacing-3xl) var(--ui-spacing-4xl);
-            }
 
-            .elite-service__title {
-                font-size: var(--ui-font-size-h4);
-                line-height: var(--ui-line-height-h4);
-            }
+/* =========================================================
+   TABLET
+   768px - 1023px
+   ========================================================= */
 
-            .elite-service__description {
-                max-width: 560px;
-                -webkit-line-clamp: 6;
-            }
-        }
+@media (min-width: 768px) and (max-width: 1023px) {
 
+    .elite-service__item {
+        grid-template-columns: 44% 56%;
+        min-height: 260px;
+    }
 
-        /* =========================================================
-           LAPTOP
-           1024px - 1279px
-           ========================================================= */
+    .elite-service__image {
+        min-height: 260px;
+    }
 
-        @media (min-width: 1024px) and (max-width: 1279px) {
+    .elite-service__content {
+        padding: var(--ui-spacing-lg) var(--ui-spacing-xl);
+        gap: var(--ui-spacing-md);
+    }
 
-            .elite-service__item {
-                grid-template-columns: 45% 55%;
-                min-height: 280px;
-            }
+    .elite-service__title {
+        font-size: var(--ui-font-size-h5);
+        line-height: var(--ui-line-height-h5);
+    }
 
-            .elite-service__image {
-                height: 280px;
-            }
+    /*
+     * Giới hạn description tối đa 10 dòng
+     */
+    .elite-service__description {
+        margin-bottom: var(--ui-spacing-sm);
 
-            .elite-service__content {
-                padding: var(--ui-spacing-xl) var(--ui-spacing-2xl);
-            }
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
 
-            .elite-service__title {
-                font-size: var(--ui-font-size-h5);
-                line-height: var(--ui-line-height-h5);
-            }
+        line-clamp: 5;
+        overflow: hidden;
+    }
 
-            .elite-service__price {
-                margin-bottom: var(--ui-spacing-xs);
-            }
+    /*
+     * Tái sử dụng button-type-2
+     */
+/* =========================================================
+   ELITE SERVICE BUTTON
+   Reuse .button-type-2
+   ========================================================= */
 
-            .elite-service__description {
-                margin-bottom: var(--ui-spacing-sm);
+.elite-service__button.button-type-2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-                font-size: var(--ui-font-size-caption);
-                line-height: var(--ui-line-height-caption);
+    width: auto;
+    min-width: 147px;
+    height: 42px;
 
-                -webkit-line-clamp: 5;
-            }
-        }
+    padding: 0 18px;
 
+    gap: 10px;
 
-        /* =========================================================
-           TABLET
-           768px - 1023px
-           ========================================================= */
+    border: 1px solid var(--Stroke, #A5846F);
+    border-radius: 999px;
 
-        @media (min-width: 768px) and (max-width: 1023px) {
+    background: var(--Button, #926E4A);
+    color: var(--White, #FFF);
 
-            .elite-service__item {
-                grid-template-columns: 44% 56%;
-                min-height: 260px;
-            }
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
 
-            .elite-service__image {
-                height: 260px;
-            }
+    text-decoration: none;
 
-            .elite-service__content {
-                padding: var(--ui-spacing-lg) var(--ui-spacing-xl);
-            }
+    box-sizing: border-box;
+}
 
-            .elite-service__title {
-                font-size: var(--ui-font-size-h5);
-                line-height: var(--ui-line-height-h5);
-            }
+.elite-service__button.button-type-2 span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-            .elite-service__price {
-                margin-bottom: var(--ui-spacing-xs);
-            }
+    font-size: 18px;
+    line-height: 1;
+}
 
-            .elite-service__description {
-                margin-bottom: var(--ui-spacing-sm);
+.elite-service__button.button-type-2:hover,
+.elite-service__button.button-type-2:active {
+    border-color: var(--LightBrown, #EEE8DA);
+    background: var(--DarkBrown, #836954);
+    color: var(--White, #FFF);
+}
+}
 
-                font-size: var(--ui-font-size-caption);
-                line-height: var(--ui-line-height-caption);
 
-                -webkit-line-clamp: 4;
-            }
+@media (max-width: 767px) {
 
-            .elite-service__button {
-                padding: var(--ui-spacing-2xs) var(--ui-spacing-xs);
-            }
-        }
 
+    .elite-service__item {
+        display: flex;
+        flex-direction: column;
 
-        /* =========================================================
-           MOBILE
-           <= 767px
-           ========================================================= */
+        width: 100%;
 
-        @media (max-width: 767px) {
+        min-height: 0;
+        height: auto;
+    }
 
-            /*
-             * Override content-p-H:
-             * desktop 48px -> mobile 24px
-             */
-            .elite-service__list.content-p-H {
-                padding: var(--ui-spacing-xl) !important;
-            }
+    .elite-service__image {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        flex-shrink: 0;
+    }
 
-            .elite-service__item {
-                display: flex;
-                flex-direction: column;
+    .elite-service__content {
+        width: 100%;
 
-                width: 100%;
-                min-height: 0;
+        padding: var(--ui-spacing-xl);
 
-                height: auto;
-            }
+        gap: var(--ui-spacing-md);
+    }
 
-            .elite-service__image {
-                width: 100%;
-                height: auto;
+    .elite-service__title {
+        margin-bottom: var(--ui-spacing-2xs);
 
-                aspect-ratio: 16 / 10;
+        font-size: var(--ui-font-size-h5);
+        line-height: var(--ui-line-height-h5);
+    }
 
-                flex-shrink: 0;
-            }
+    .elite-service__price {
+        margin-bottom: var(--ui-spacing-2xs);
+    }
 
-            .elite-service__content {
-                width: 100%;
+    .elite-service__description {
+        max-width: none;
+        margin-bottom: var(--ui-spacing-md);
+        display: block;
+        overflow: visible;
+    }
 
-                padding: var(--ui-spacing-xl);
-            }
+    .elite-service__button.button-type-2 {
+        padding: var(--ui-spacing-2xs) var(--ui-spacing-sm);
+    }
+}
 
-            .elite-service__title {
-                margin-bottom: var(--ui-spacing-2xs);
+@media (max-width: 480px) {
 
-                font-size: var(--ui-font-size-h5);
-                line-height: var(--ui-line-height-h5);
-            }
 
-            .elite-service__price {
-                margin-bottom: var(--ui-spacing-sm);
+    .elite-service__image {
+        aspect-ratio: 4 / 3;
+    }
 
-                font-size: var(--ui-font-size-caption);
-            }
+    .elite-service__content {
+        padding: var(--ui-spacing-lg);
+    }
 
-            .elite-service__description {
-                max-width: none;
+    .elite-service__title {
+        font-size: var(--ui-font-size-h6);
+        line-height: var(--ui-line-height-h6);
+    }
+}
+</style>
 
-                margin-bottom: var(--ui-spacing-md);
+<section class="content-p-H elite-service__list">
 
-                font-size: var(--ui-font-size-caption);
-                line-height: var(--ui-line-height-caption);
+    <!-- ITEM 1 -->
+    <article class="elite-service__item">
 
-                -webkit-line-clamp: none;
-                overflow: visible;
-            }
+        <div class="elite-service__image">
+            <img
+                src="../assets/hanhtrinh/Rectangle_9.png"
+                alt="SH Elite - Dịch vụ thượng lưu mặt đất" />
+        </div>
 
-            .elite-service__button {
-                padding: var(--ui-spacing-2xs) var(--ui-spacing-sm);
-            }
-        }
+        <div class="elite-service__content">
 
+            <h2 class="elite-service__title">
+                SH Elite - Dịch vụ thượng lưu mặt đất
+            </h2>
 
-        /* =========================================================
-           SMALL MOBILE
-           <= 480px
-           ========================================================= */
-
-        @media (max-width: 480px) {
-
-            .elite-service__list.content-p-H {
-                padding: var(--ui-spacing-md) !important;
-            }
-
-            .elite-service__image {
-                aspect-ratio: 4 / 3;
-            }
-
-            .elite-service__content {
-                padding: var(--ui-spacing-lg);
-            }
-
-            .elite-service__title {
-                font-size: var(--ui-font-size-h6);
-                line-height: var(--ui-line-height-h6);
-            }
-
-            .elite-service__description {
-                font-size: var(--ui-font-size-caption);
-                line-height: var(--ui-line-height-caption);
-            }
-        }
-    </style>
-
-        <section class="content-p-H elite-service__list">
-
-            <!-- ITEM 1 -->
-            <article class="elite-service__item">
-
-                <div class="elite-service__image">
-                    <img
-                        src="../assets/hanhtrinh/Rectangle_9.png"
-                        alt="SH Elite - Dịch vụ thượng lưu mặt đất" />
-                </div>
-
-                <div class="elite-service__content">
-
-                    <h2 class="elite-service__title">
-                        SH Elite - Dịch vụ thượng lưu mặt đất
-                    </h2>
-
-                    <div class="elite-service__price">
-                        Đơn giá 3,000,000 VND
-                    </div>
-
-                    <p class="elite-service__description ui-scrollbar-hide">
-                        SH Elite mang đến trải nghiệm dịch vụ thương gia sân bay
-                        cao
-                        cấp với quy trình đón tiếp, hỗ trợ và làm thủ tục ưu
-                        tiên
-                        được cá nhân hóa từ trước chuyến bay. Hành khách được
-                        tận
-                        hưởng không gian phòng chờ sang trọng mang phong cách
-                        Đông
-                        Dương, dịch vụ trợ lý cá nhân tận tâm cùng nhiều tiện
-                        ích
-                        thư giãn như ghế massage, khu vực làm việc yên tĩnh và
-                        tầm
-                        nhìn ra đường băng. Điểm nhấn của trải nghiệm là hành
-                        trình
-                        ẩm thực cao cấp với thực đơn kết hợp semi-buffet và à la
-                        carte, cùng các lựa chọn rượu vang, trà chiều, cà phê và
-                        cocktail được tuyển chọn, mang đến khởi đầu trọn vẹn cho
-                        mỗi
-                        chuyến đi.
-                    </p>
-
-                    <a href="#" class="elite-service__button">
-                        Xem chi tiết
-                        <span>→</span>
-                    </a>
-
-                </div>
-            </article>
-
-            <!-- ITEM 2 -->
-            <article class="elite-service__item">
-
-                <div class="elite-service__image">
-                    <img
-                        src="../assets/hanhtrinh/Rectangle9-1.png"
-                        alt="Trợ lý đón tiến ưu tiên" />
-                </div>
-
-                <div class="elite-service__content">
-
-                    <h2 class="elite-service__title">
-                        Trợ lý đón tiến ưu tiên
-                    </h2>
-
-                    <div class="elite-service__price">
-                        Đơn giá 1,200,000 VND
-                    </div>
-
-                    <p class="elite-service__description ui-scrollbar-hide">
-                        Tận hưởng hành trình thuận tiện hơn với sự hỗ trợ
-                        tận tình từ đội ngũ trợ lý chuyên nghiệp.
-                    </p>
-
-                    <a href="#" class="elite-service__button">
-                        Xem chi tiết
-                        <span>→</span>
-                    </a>
-
-                </div>
-            </article>
-
-            <!-- ITEM 3 -->
-            <article class="elite-service__item">
-
-                <div class="elite-service__image">
-                    <img
-                        src="YOUR-LOUNGE-IMAGE.jpg"
-                        alt="Phòng chờ cao cấp toàn cầu" />
-                </div>
-
-                <div class="elite-service__content">
-
-                    <h2 class="elite-service__title">
-                        Phòng chờ cao cấp toàn cầu
-                    </h2>
-
-                    <div class="elite-service__price">
-                        Đơn giá 2,000,000 VND
-                    </div>
-
-                    <p class="elite-service__description ui-scrollbar-hide">
-                        Tận hưởng không gian thư giãn cao cấp tại những
-                        phòng chờ sang trọng, mang đến sự thoải mái
-                        trước mỗi chuyến bay.
-                    </p>
-
-                    <a href="#" class="elite-service__button">
-                        Xem chi tiết
-                        <span>→</span>
-                    </a>
-
-                </div>
-            </article>
-
-            <!-- ITEM 4 -->
-            <article class="elite-service__item">
-
-                <div class="elite-service__image">
-                    <img
-                        src="YOUR-AIRPORT-IMAGE.jpg"
-                        alt="Đưa đón sân bay cao cấp" />
-                </div>
-
-                <div class="elite-service__content">
-
-                    <h2 class="elite-service__title">
-                        Đưa đón sân bay cao cấp
-                    </h2>
-
-                    <div class="elite-service__price">
-                        Đơn giá 1,200,000 VND
-                    </div>
-
-                    <p class="elite-service__description ui-scrollbar-hide">
-                        Dịch vụ đưa đón sân bay cao cấp giúp hành trình
-                        của bạn trở nên thuận tiện và thoải mái hơn.
-                    </p>
-
-                    <a href="#" class="elite-service__button">
-                        Xem chi tiết
-                        <span>→</span>
-                    </a>
-
-                </div>
-            </article>
-
-        </section>
-    </div>
-    <section class="content-p-H elite-service__list">
-
-        <!-- ITEM 1 -->
-        <article class="elite-service__item">
-
-            <div class="elite-service__image">
-                <img
-                    src="../assets/hanhtrinh/Rectangle_9.png"
-                    alt="SH Elite - Dịch vụ thượng lưu mặt đất" />
+            <div class="elite-service__price">
+                Đơn giá 3,000,000 VND
             </div>
 
-            <div class="elite-service__content">
-
-                <h2 class="elite-service__title">
-                    SH Elite - Dịch vụ thượng lưu mặt đất
-                </h2>
-
-                <div class="elite-service__price">
-                    Đơn giá 3,000,000 VND
-                </div>
-
-                <p class="elite-service__description ui-scrollbar-hide">
-                    SH Elite mang đến trải nghiệm dịch vụ thương gia sân bay cao
-                    cấp với quy trình đón tiếp, hỗ trợ và làm thủ tục ưu tiên
-                    được cá nhân hóa từ trước chuyến bay. Hành khách được tận
-                    hưởng không gian phòng chờ sang trọng mang phong cách Đông
-                    Dương, dịch vụ trợ lý cá nhân tận tâm cùng nhiều tiện ích
-                    thư giãn như ghế massage, khu vực làm việc yên tĩnh và tầm
-                    nhìn ra đường băng. Điểm nhấn của trải nghiệm là hành trình
-                    ẩm thực cao cấp với thực đơn kết hợp semi-buffet và à la
-                    carte, cùng các lựa chọn rượu vang, trà chiều, cà phê và
-                    cocktail được tuyển chọn, mang đến khởi đầu trọn vẹn cho mỗi
-                    chuyến đi.
-                </p>
-
-                <a href="#" class="elite-service__button">
-                    Xem chi tiết
-                    <span>→</span>
-                </a>
-
-            </div>
-        </article>
-
-        <!-- ITEM 2 -->
-        <article class="elite-service__item">
-
-            <div class="elite-service__image">
-                <img
-                    src="../assets/hanhtrinh/Rectangle9-1.png"
-                    alt="Trợ lý đón tiến ưu tiên" />
+            <div class="elite-service__location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                Hà Nội
             </div>
 
-            <div class="elite-service__content">
+            <p class="elite-service__description">
+                SH Elite mang đến trải nghiệm dịch vụ thương gia sân bay cao
+                cấp với quy trình đón tiếp, hỗ trợ và làm thủ tục ưu tiên
+                được cá nhân hóa từ trước chuyến bay. Hành khách được tận
+                hưởng không gian phòng chờ sang trọng mang phong cách Đông
+                Dương, dịch vụ trợ lý cá nhân tận tâm cùng nhiều tiện ích
+                thư giãn như ghế massage, khu vực làm việc yên tĩnh và tầm
+                nhìn ra đường băng. Điểm nhấn của trải nghiệm là hành trình
+                ẩm thực cao cấp với thực đơn kết hợp semi-buffet và à la
+                carte, cùng các lựa chọn rượu vang, trà chiều, cà phê và
+                cocktail được tuyển chọn, mang đến khởi đầu trọn vẹn cho mỗi
+                chuyến đi.
+            </p>
 
-                <h2 class="elite-service__title">
-                    Trợ lý đón tiến ưu tiên
-                </h2>
+            <a href="#" class="elite-service__button button-type-2">
+                Xem chi tiết
+                <span>→</span>
+            </a>
 
-                <div class="elite-service__price">
-                    Đơn giá 1,200,000 VND
-                </div>
+        </div>
+    </article>
 
-                <p class="elite-service__description ui-scrollbar-hide">
-                    Tận hưởng hành trình thuận tiện hơn với sự hỗ trợ
-                    tận tình từ đội ngũ trợ lý chuyên nghiệp.
-                </p>
+    <!-- ITEM 2 -->
+    <article class="elite-service__item">
 
-                <a href="#" class="elite-service__button">
-                    Xem chi tiết
-                    <span>→</span>
-                </a>
+        <div class="elite-service__image">
+            <img
+                src="../assets/hanhtrinh/Rectangle9-1.png"
+                alt="Trợ lý đón tiễn ưu tiên" />
+        </div>
 
-            </div>
-        </article>
+        <div class="elite-service__content">
 
-        <!-- ITEM 3 -->
-        <article class="elite-service__item">
+            <h2 class="elite-service__title">
+                Trợ lý đón tiễn ưu tiên
+            </h2>
 
-            <div class="elite-service__image">
-                <img
-                    src="YOUR-LOUNGE-IMAGE.jpg"
-                    alt="Phòng chờ cao cấp toàn cầu" />
-            </div>
-
-            <div class="elite-service__content">
-
-                <h2 class="elite-service__title">
-                    Phòng chờ cao cấp toàn cầu
-                </h2>
-
-                <div class="elite-service__price">
-                    Đơn giá 2,000,000 VND
-                </div>
-
-                <p class="elite-service__description ui-scrollbar-hide">
-                    Tận hưởng không gian thư giãn cao cấp tại những
-                    phòng chờ sang trọng, mang đến sự thoải mái
-                    trước mỗi chuyến bay.
-                </p>
-
-                <a href="#" class="elite-service__button">
-                    Xem chi tiết
-                    <span>→</span>
-                </a>
-
-            </div>
-        </article>
-
-        <!-- ITEM 4 -->
-        <article class="elite-service__item">
-
-            <div class="elite-service__image">
-                <img
-                    src="YOUR-AIRPORT-IMAGE.jpg"
-                    alt="Đưa đón sân bay cao cấp" />
+            <div class="elite-service__price">
+                Đơn giá 1,200,000 VND
             </div>
 
-            <div class="elite-service__content">
+            <p class="elite-service__description">
+                Tận hưởng hành trình sân bay thuận tiện và riêng tư hơn với
+                đội ngũ hỗ trợ chuyên biệt, đồng hành từ khi đón tại sân bay
+                đến khi hoàn tất các thủ tục cần thiết.
+            </p>
 
-                <h2 class="elite-service__title">
-                    Đưa đón sân bay cao cấp
-                </h2>
+            <a href="#" class="elite-service__button button-type-2">
+                Xem chi tiết
+                <span>→</span>
+            </a>
 
-                <div class="elite-service__price">
-                    Đơn giá 1,200,000 VND
-                </div>
+        </div>
+    </article>
 
-                <p class="elite-service__description ui-scrollbar-hide">
-                    Dịch vụ đưa đón sân bay cao cấp giúp hành trình
-                    của bạn trở nên thuận tiện và thoải mái hơn.
-                </p>
+    <!-- ITEM 3 -->
+    <article class="elite-service__item">
 
-                <a href="#" class="elite-service__button">
-                    Xem chi tiết
-                    <span>→</span>
-                </a>
+        <div class="elite-service__image">
+            <img
+                src="../assets/hanhtrinh/Rectangle9-2.png"
+                alt="Phòng chờ cao cấp toàn cầu" />
+        </div>
 
+        <div class="elite-service__content">
+
+            <h2 class="elite-service__title">
+                Phòng chờ cao cấp toàn cầu
+            </h2>
+
+            <div class="elite-service__price">
+                Đơn giá 2,000,000 VND
             </div>
-        </article>
 
-    </section>
-</div>
+            <p class="elite-service__description">
+                Mở rộng trải nghiệm đặc quyền với hơn 50 phòng chờ Premium
+                tại 20 quốc gia trên thế giới. Từ Dubai, Canada, Hong Kong
+                đến Mỹ, mỗi điểm dừng mang đến không gian sang trọng và dịch
+                vụ chuẩn quốc tế, để Quý khách tận hưởng những phút giây thư
+                thái trước mỗi hành trình.
+            </p>
+
+            <a href="#" class="elite-service__button button-type-2">
+                Xem chi tiết
+                <span>→</span>
+            </a>
+
+        </div>
+    </article>
+
+    <!-- ITEM 4 -->
+    <article class="elite-service__item">
+
+        <div class="elite-service__image">
+            <img
+                src="../assets/hanhtrinh/Rectangle9-3.png"
+                alt="Đưa đón sân bay cao cấp" />
+        </div>
+
+        <div class="elite-service__content">
+
+            <h2 class="elite-service__title">
+                Đưa đón sân bay cao cấp
+            </h2>
+
+            <div class="elite-service__price">
+                Đơn giá 1,200,000 VND
+            </div>
+
+            <p class="elite-service__description">
+                Dịch vụ đưa đón sân bay cao cấp giúp hành trình của bạn trở
+                nên thuận tiện và thoải mái hơn.
+            </p>
+
+            <a href="#" class="elite-service__button button-type-2">
+                Xem chi tiết
+                <span>→</span>
+            </a>
+
+        </div>
+    </article>
+
+</section>
