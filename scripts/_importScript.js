@@ -206,8 +206,8 @@ const landingPage = {
         //     // }
         // },
         {
-            target: '#intro1_placeholder',
-            component: COMPONENTS.INTRO1,
+            target: '#landing-hero_placeholder',
+            component: COMPONENTS.LANDING_HERO,
         },
 
     ]
