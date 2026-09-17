@@ -28,6 +28,7 @@ const App = {
     HEADER: "components/header.html",
     FOOTER: "components/footer.html",
     LANDING_HERO: "components/landing_hero.html",
+      LANDING_1: 'components/landing_1.html',
     HANHTRINH_HOME_HERO: "components/hanhtrinh_home_hero.html",
     HANHTRINH_HOME_SERVICES: "components/hanhtrinh_home_services.html",
   },
@@ -225,14 +226,10 @@ const landingPage = {
       target: "#intro1_placeholder",
       component: COMPONENTS.INTRO1,
     },
-    {
-      target: "#hanhtrinh_home_hero_placeholder",
-      component: COMPONENTS.HANHTRINH_HOME_HERO,
-    },
-    {
-      target: "#hanhtrinh_home_services_placeholder",
-      component: COMPONENTS.HANHTRINH_HOME_SERVICES,
-    },
+       {
+            target: '#landing-1_placeholder',
+            component: COMPONENTS.LANDING_1,
+        },
   ],
 };
 
