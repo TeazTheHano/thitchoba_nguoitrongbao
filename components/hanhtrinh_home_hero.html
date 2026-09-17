@@ -1,0 +1,141 @@
+<div>
+    <style>
+/* =========================================================
+   ELITE SERVICE - HERO
+   ========================================================= */
+.elite-service__hero{
+       padding-top: var(--ui-spacing-15xl);
+       padding-bottom: var(--ui-spacing-15xl);
+
+}
+.elite-service__hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    overflow: hidden;
+    background: var(--White);
+    gap:var(--ui-spacing-3xl);
+}
+
+
+/* =========================
+   HERO CONTENT
+   ========================= */
+
+.elite-service__hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.elite-service__hero-title {
+    margin: 0 0 14px;
+
+    font-family: var(--ui-font-family-display);
+    font-size: var(  --ui-font-size-h1);
+    line-height: 1.25;
+    font-weight: 700;
+
+    color: var(--Black);
+}
+
+.elite-service__hero-description {
+    width: 100%;
+
+    margin: 0;
+
+    font-family: var(--ui-font-family);
+    font-size: var(--ui-font-size-base);
+    line-height: 1.55;
+    font-weight: 400;
+
+    color: #666;
+}
+
+
+/* =========================
+   HERO IMAGE
+   ========================= */
+
+.elite-service__hero-image {
+    width: 100%;
+    height: 300px;
+
+    overflow: hidden;
+}
+
+.elite-service__hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 1024px) {
+
+    .elite-service__hero-image {
+        height: 260px;
+    }
+}
+@media (max-width: 768px) {
+
+    .elite-service__hero {
+        display: flex;
+        flex-direction: column;
+
+        height: auto;
+    }
+
+    .elite-service__hero-image {
+        /* order: -1; */
+
+        height: 220px;
+    }
+
+
+
+    .elite-service__hero-description {
+        max-width: 100%;
+
+        font-size: var(--ui-font-size-sm);
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .elite-service__hero-image {
+        height: 180px;
+    }
+}
+</style>
+    <section class="content-p-H elite-service__hero">
+        <div class="elite-service__hero-content">
+            <h1 class="elite-service__hero-title">
+                Hành trình liền mạch -
+                Tận hưởng ngay từ điểm
+                khởi hành
+            </h1>
+
+            <p class="elite-service__hero-description">
+                Một hành trình đẳng cấp không chỉ bắt đầu khi máy bay
+                cất cánh. Với hệ thống dịch vụ mặt đất và đưa đón được
+                chọn lọc, The Inner giúp Quý khách tiết kiệm thời gian,
+                giảm bớt những chờ đợi không cần thiết và tận hưởng sự
+                thư thái xuyên suốt mỗi chuyến đi.
+            </p>
+        </div>
+
+        <div class="elite-service__hero-image">
+            <img
+                src="../assets/hanhtrinh/hero.png"
+                alt="Hành trình liền mạch" />
+        </div>
+    </section>
+</div>
