@@ -1,0 +1,749 @@
+<div>
+    <style>
+
+/* =========================================================
+   LOUNGE PAGE
+   ========================================================= */
+
+.hanhtrinh-phongcho {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #F4EEDF;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.lounge__hero {
+    position: relative;
+
+    width: 100%;
+    height: 420px;
+
+    overflow: hidden;
+}
+
+.lounge__hero img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.lounge__intro {
+    width: 100%;
+    text-align: center;
+}
+
+.lounge__title {
+      margin: 0 0 var(--ui-spacing-2xl);
+    color: #000;
+    font-size: var(--ui-font-size-h1);
+    font-weight: 700;
+    line-height: var(--ui-line-height-h1);
+}
+
+.lounge__desc {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--Gray);
+    font-size: var(--ui-font-size-base);
+    /* font-weight: var(--ui-font-weight-semibold); */
+    line-height: var(--ui-line-height-base);
+    text-align: justify;
+}
+
+
+.lounge__list {
+    width: 100%;
+}
+
+.lounge__list-title {
+    margin: 0 0 10px;
+
+    color: #000;
+
+    font-size: var(--ui-font-size-h3);
+    font-weight: 700;
+    line-height: var(--ui-line-height-h3);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.lounge__search {
+    display: flex;
+
+    width: 100%;
+
+    margin: 0 0 18px;
+    padding: 0;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.lounge__search-field {
+    position: relative;
+
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   SEARCH ICON
+   ========================================================= */
+
+.lounge__search-field svg {
+    position: absolute;
+
+    top: 50%;
+    left: 12px;
+
+    width: 14px;
+    height: 14px;
+
+    color: #555;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SEARCH INPUT
+   ========================================================= */
+
+.lounge__search-input {
+    display: block;
+
+    width: 100%;
+    height: 40px;
+
+    margin: 0;
+    padding: 5px 12px 5px 32px;
+
+    border: 1px solid #888;
+    border-radius: 999px;
+
+    outline: none;
+
+    background: #fff;
+    color: #000;
+
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 150%;
+
+    appearance: none;
+    box-shadow: none;
+}
+
+.lounge__search-input::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+.lounge__search-input:focus {
+    border-color: #926E4A;
+
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   HIDE LABEL
+   ========================================================= */
+
+.lounge__search .ui-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+}
+
+
+.lounge__search .elite-service__button.button-type-2 {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 13% !important;
+    height: 40px !important;
+    margin: 0;
+    font-size: var(--ui-font-size-sm);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.lounge__search .elite-service__button.button-type-2:hover {
+    border-color: #EEE8DA;
+
+    background: #836954;
+    color: #fff;
+}
+
+.lounge__search .elite-service__button.button-type-2:active {
+    border-color: #EEE8DA;
+
+    background: #836954;
+    color: #fff;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.lounge__grid {
+    display: grid;
+
+    width: 100%;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.lounge__card {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 0.88;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    background: #ddd;
+
+    text-decoration: none;
+}
+
+.lounge__card img {
+    position: absolute;
+
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.3s ease;
+}
+
+.lounge__card:hover img {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   CARD OVERLAY
+   ========================================================= */
+
+.lounge__card-overlay {
+    position: absolute;
+
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+
+    display: flex;
+
+    min-height: 40px;
+
+    padding: 6px 8px;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(244, 238, 223, 0.88);
+
+    border-radius: 2px;
+}
+
+.text-subTitle {
+
+    color: var(--Black);
+    font-size: var(--ui-font-size-md);
+    text-align: center;
+}
+
+
+@media (min-width: 1280px) {
+
+    .lounge__hero {
+        height: 420px;
+    }
+
+
+}
+
+
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+    .lounge__hero {
+        height: 360px;
+    }
+
+    .lounge__grid {
+        gap: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   768px - 1023px
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .lounge__hero {
+        height: 200px;
+    }
+
+    .lounge__search {
+        gap: 18px;
+
+        margin-bottom: 18px;
+    }
+
+    .lounge__search-field {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .lounge__search-field svg {
+        left: 8px;
+
+        width: 10px;
+        height: 10px;
+    }
+
+    .lounge__search-input {
+        height: 30px;
+
+        padding: 3px 10px 3px 26px;
+
+        font-size: 7px;
+    }
+
+
+    /* BUTTON */
+
+    .lounge__search .elite-service__button.button-type-2 {
+        width: 64px !important;
+        min-width: 64px !important;
+        height: 30px !important;
+
+        padding: 0 8px !important;
+
+        gap: 4px;
+
+        font-size: 7px;
+    }
+
+
+    /* GRID */
+
+    .lounge__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    /* CARD */
+
+    .lounge__card {
+        aspect-ratio: 1 / 0.88;
+
+        border-radius: 3px;
+    }
+
+
+    /* CARD OVERLAY */
+
+    .lounge__card-overlay {
+        right: 6px;
+        bottom: 6px;
+        left: 6px;
+
+        min-height: 32px;
+
+        padding: 4px 5px;
+    }
+
+    .text-subTitle {
+    font-size: var(--ui-font-size-lg);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   <= 767px
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    /* HERO */
+
+    .lounge__hero {
+        height: auto;
+
+        aspect-ratio: 16 / 10;
+    }
+
+
+
+
+    .lounge__desc {
+        max-width: 100%;
+    }
+
+
+
+    /* SEARCH */
+
+    .lounge__search {
+        gap: 8px;
+
+        margin-bottom: 14px;
+    }
+
+    .lounge__search-field {
+        min-width: 0;
+    }
+
+    .lounge__search-field svg {
+        left: 10px;
+
+        width: 12px;
+        height: 12px;
+    }
+
+    .lounge__search-input {
+        height: 30px;
+
+        padding: 5px 10px 5px 28px;
+
+        font-size: 9px;
+    }
+
+
+    /* BUTTON */
+
+    .lounge__search .elite-service__button.button-type-2 {
+        width: 70px !important;
+        min-width: 70px !important;
+        height: 30px !important;
+
+        padding: 0 10px !important;
+
+        font-size: 9px;
+    }
+
+
+    /* GRID */
+
+    .lounge__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+
+    /* CARD */
+
+    .lounge__card {
+        aspect-ratio: 1 / 0.9;
+
+        border-radius: 3px;
+    }
+
+
+    /* OVERLAY */
+
+    .lounge__card-overlay {
+        right: 5px;
+        bottom: 5px;
+        left: 5px;
+
+        min-height: 34px;
+
+        padding: 5px;
+    }
+
+      .text-subTitle {
+    font-size: var(--ui-font-size-md);
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    /* SEARCH */
+
+    .lounge__search {
+        gap: 6px;
+    }
+
+    .lounge__search-input {
+        height: 28px;
+
+        font-size: 8px;
+    }
+
+    .lounge__search .elite-service__button.button-type-2 {
+        width: 62px !important;
+        min-width: 62px !important;
+        height: 28px !important;
+
+        padding: 0 7px !important;
+
+        font-size: 8px;
+    }
+
+
+    /* GRID */
+
+    .lounge__grid {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .lounge__card {
+        aspect-ratio: 16 / 10;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+    .lounge__search {
+        gap: 5px;
+    }
+
+    .lounge__search .elite-service__button.button-type-2 {
+        width: 58px !important;
+        min-width: 58px !important;
+
+        padding: 0 5px !important;
+    }
+
+}
+
+</style>
+
+    <div class="hanhtrinh-phongcho">
+
+        <!-- HERO -->
+        <div class="lounge__hero">
+            <img
+                binding-imgpath
+                src="../assets/Phongcho/Frame-1.png"
+                alt="Phòng chờ cao cấp toàn cầu" />
+        </div>
+
+        <!-- INTRO -->
+        <section class="content-p-H lounge__intro">
+
+            <h1 class="lounge__title">
+                Phòng chờ cao cấp toàn cầu
+            </h1>
+
+            <p class="lounge__desc">
+                Mở rộng trải nghiệm đặc quyền với hơn 50 phòng chờ Premium tại
+                20
+                quốc gia trên thế giới. Từ Dubai, Canada, Hong Kong đến Mỹ, mỗi
+                điểm dừng mang đến không gian sang trọng và dịch vụ chuẩn quốc
+                tế,
+                để Quý khách tận hưởng những phút giây thư thái trước mỗi hành
+                trình.
+            </p>
+
+        </section>
+
+        <!-- LIST -->
+        <section class="content-p-H lounge__list">
+
+            <h2 class="lounge__list-title">
+                Danh sách phòng chờ cao cấp toàn cầu
+            </h2>
+
+            <form class="lounge__search" role="search">
+
+                <div class="lounge__search-field">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m20 20-3.5-3.5" />
+                    </svg>
+
+                    <label class="ui-visually-hidden" for="lounge-search">
+                        Tìm phòng chờ
+                    </label>
+
+                    <input
+                        id="lounge-search"
+                        class="lounge__search-input"
+                        type="search"
+                        placeholder="Tìm kiếm địa điểm sử dụng theo nhu cầu và mong muốn..." />
+                </div>
+
+                <button href="#" class="elite-service__button button-type-2">
+                    Tìm kiếm
+                </button>
+
+            </form>
+
+            <div class="lounge__grid">
+
+                <a href="#" class="lounge__card">
+                    <img
+                        src="../assets/Phongcho/Frame.png"
+                        alt="DFW TEAir DomArr Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            DFW TEAir DomArr Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/Phongcho/Frame-2.png"
+                        alt="YUL T0Air IntDep Air France Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            YUL T0Air IntDep Air France Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img
+                        src="../assets/Phongcho/Frame.png"
+                        alt="DXB T3Air IntDep Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            DXB T3Air IntDep Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/hanhtrinh/lounge-mco.png"
+                        alt="MCO TCAir IntDep Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            MCO TCAir IntDep Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/hanhtrinh/lounge-ruh.png"
+                        alt="RUH T1Air IntDep Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            RUH T1Air IntDep Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/hanhtrinh/lounge-saw.png"
+                        alt="SAW T1Air IntDep Plaza Premium Bosphorus Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            SAW T1Air IntDep Plaza Premium Bosphorus Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/hanhtrinh/lounge-sin.png"
+                        alt="SIN T3Air IntDep Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            SIN T3Air IntDep Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/hanhtrinh/lounge-hkg.png"
+                        alt="HKG T1Air IntDep Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            HKG T1Air IntDep Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="lounge__card">
+                    <img src="../assets/hanhtrinh/lounge-yvr.png"
+                        alt="YVR T1Air IntDep Plaza Premium Lounge" />
+                    <div class="lounge__card-overlay">
+                        <p class="text-subTitle">
+                            YVR T1Air IntDep Plaza Premium Lounge
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+</div>

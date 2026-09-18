@@ -1,0 +1,398 @@
+<div>
+    <style>
+    /* =========================================================
+   SH ELITE DETAIL PAGE
+   ========================================================= */
+
+    /*#hanhtrinh-detail-shElite {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--LightBrown);
+    overflow: hidden;
+} */
+
+    /* =========================================================
+   HERO
+   ========================================================= */
+
+   #hanhtrinh-detail-shElite .lounge__hero {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+    }
+
+   #hanhtrinh-detail-shElite .lounge__hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* =========================================================
+   HERO OVERLAY
+   ========================================================= */
+
+   #hanhtrinh-detail-shElite .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    /* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+   #hanhtrinh-detail-shElite .lounge__hero-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+      padding: var(--ui-spacing-xl);
+
+      text-align: center;
+    }
+
+   #hanhtrinh-detail-shElite .lounge__hero-title {
+      margin: 0;
+
+      color: var(--White);
+      font-family: var(--ui-font-family-display);
+      font-size: var(--ui-font-size-h1);
+      font-weight: var(--ui-font-weight-bold);
+      line-height: var(--ui-line-height-h1);
+
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    /* =========================================================
+   INTRO / SERVICE HERO
+   ========================================================= */
+
+   #hanhtrinh-detail-shElite .elite-service__hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+      width: 100%;
+      overflow: hidden;
+
+      gap: var(--ui-spacing-5xl);
+    }
+
+    /* LEFT CONTENT */
+
+   #hanhtrinh-detail-shElite .elite-service__hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+   #hanhtrinh-detail-shElite .elite-service__hero-title,
+   #hanhtrinh-detail-shElite .elite-service__hero-title-v2 {
+      margin: 0 0 var(--ui-spacing-md);
+    }
+
+   #hanhtrinh-detail-shElite .elite-service__hero-description {
+      width: 100%;
+      max-width: 100%;
+
+      margin: 0;
+
+      color: var(--Gray);
+      font-family: var(--ui-font-family);
+      font-size: var(--ui-font-size-body);
+      font-weight: var(--ui-font-weight-normal);
+      line-height: var(--ui-line-height-body);
+    }
+
+    /* RIGHT IMAGE */
+
+#hanhtrinh-detail-shElite .elite-service__hero-image {
+    width: 100%;
+    height: 100%;
+       aspect-ratio: 6 / 3;
+    overflow: hidden;
+}
+
+#hanhtrinh-detail-shElite .elite-service__hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+    /* =========================================================
+   DETAIL CONTENT
+   ========================================================= */
+
+   #hanhtrinh-detail-shElite .elite-service__detail {
+      width: 100%;
+      background: var(--White);
+    }
+
+   #hanhtrinh-detail-shElite .elite-service__detail-content {
+      width: 100%;
+      max-width: var(--breakpoint-2xl);
+      margin: 0 auto;
+    }
+
+   #hanhtrinh-detail-shElite .elite-service__detail-title {
+      margin: 0 0 var(--ui-spacing-xl);
+
+      color: var(--Brown);
+      font-family: var(--ui-font-family-display);
+      font-size: var(--ui-font-size-h2);
+      font-weight: var(--ui-font-weight-bold);
+      line-height: var(--ui-line-height-h2);
+    }
+
+   #hanhtrinh-detail-shElite .elite-service__detail p {
+      margin: 0 0 var(--ui-spacing-md);
+
+      color: var(--Black);
+      font-family: var(--ui-font-family);
+      font-size: var(--ui-font-size-sm);
+      font-weight: var(--ui-font-weight-normal);
+      line-height: var(--ui-line-height-body);
+    }
+
+   #hanhtrinh-detail-shElite .elite-service__detail p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================
+   DESKTOP
+   ========================================================= */
+
+    @media (min-width: 1280px) {
+     #hanhtrinh-detail-shElite .lounge__hero {
+        height: 420px;
+      }
+    }
+
+    /* =========================================================
+   TABLET
+   1024px - 1279px
+   ========================================================= */
+
+    @media (min-width: 1024px) and (max-width: 1279px) {
+     #hanhtrinh-detail-shElite .lounge__hero {
+        height: 360px;
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__hero {
+        gap: var(--ui-spacing-3xl);
+      }
+
+    }
+
+    /* =========================================================
+   TABLET
+   768px - 1023px
+   ========================================================= */
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+     #hanhtrinh-detail-shElite .lounge__hero {
+        height: 280px;
+      }
+
+     #hanhtrinh-detail-shElite .lounge__hero-title {
+        font-size: var(--ui-font-size-h2);
+        line-height: var(--ui-line-height-h2);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: var(--ui-spacing-xl);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__hero-description {
+        font-size: var(--ui-font-size-sm);
+        line-height: var(--ui-line-height-body);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__detail-title {
+        font-size: var(--ui-font-size-h2);
+      }
+    }
+
+    /* =========================================================
+   MOBILE
+   <= 767px
+   ========================================================= */
+
+    @media (max-width: 767px) {
+      /* HERO */
+
+     #hanhtrinh-detail-shElite .lounge__hero {
+        height: auto;
+        aspect-ratio: 16 / 10;
+      }
+
+     #hanhtrinh-detail-shElite .lounge__hero-title {
+        font-size: var(--ui-font-size-h2);
+        line-height: var(--ui-line-height-h2);
+      }
+
+      /* SERVICE */
+
+     #hanhtrinh-detail-shElite .elite-service__hero {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ui-spacing-xl);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__hero-content {
+        width: 100%;
+      }
+
+
+     #hanhtrinh-detail-shElite .elite-service__hero-description {
+        max-width: 100%;
+        font-size: var(--ui-font-size-sm);
+        line-height: var(--ui-line-height-body);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__hero-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+      }
+
+      /* DETAIL */
+
+     #hanhtrinh-detail-shElite .elite-service__detail-title {
+        font-size: var(--ui-font-size-h3);
+        line-height: var(--ui-line-height-h3);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__detail p {
+        font-size: var(--ui-font-size-sm);
+        line-height: var(--ui-line-height-body);
+      }
+    }
+
+    /* =========================================================
+   SMALL MOBILE
+   <= 480px
+   ========================================================= */
+
+    @media (max-width: 480px) {
+     #hanhtrinh-detail-shElite .lounge__hero {
+        aspect-ratio: 16 / 10;
+      }
+
+     #hanhtrinh-detail-shElite .lounge__hero-content {
+        padding: var(--ui-spacing-md);
+      }
+
+     #hanhtrinh-detail-shElite .lounge__hero-title {
+        font-size: var(--ui-font-size-h3);
+        line-height: var(--ui-line-height-h3);
+      }
+
+     #hanhtrinh-detail-shElite .elite-service__hero {
+        gap: var(--ui-spacing-lg);
+      }
+    }
+  </style>
+    <section id="hanhtrinh-detail-shElite">
+        <div class="lounge__hero">
+            <img
+                src="../assets/Phongcho/shedlitr.jpg"
+                alt="Phòng chờ cao cấp toàn cầu" />
+            <div class="hero-overlay"></div>
+            <div class="lounge__hero-content">
+                <h1 class="lounge__hero-title">Thông tin chi tiết</h1>
+            </div>
+        </div>
+
+        <section class="content-p-H elite-service__hero">
+            <div class="elite-service__hero-content">
+                <h1 class="elite-service__hero-title">
+                    SH Elite - Dịch vụ thượng lưu mặt đất
+                </h1>
+
+                <p class="elite-service__hero-description">
+                    SH Elite mang đến trải nghiệm dịch vụ thương gia sân bay cao
+                    cấp với
+                    quy trình đón tiếp, hỗ trợ và làm thủ tục ưu tiên được cá
+                    nhân hóa từ
+                    trước chuyến bay. Hành khách được tận hưởng không gian phòng
+                    chờ sang
+                    trọng mang phong cách Đông Dương, dịch vụ trợ lý cá nhân tận
+                    tâm cùng
+                    nhiều tiện ích thư giãn như ghế massage, khu vực làm việc
+                    yên tĩnh và
+                    tầm nhìn ra đường băng. Điểm nhấn của trải nghiệm là hành
+                    trình ẩm
+                    thực cao cấp với thực đơn kết hợp semi-buffet và à la carte,
+                    cùng các
+                    lựa chọn rượu vang, trà chiều, cà phê và cocktail được tuyển
+                    chọn,
+                    mang đến khởi đầu trọn vẹn cho mỗi chuyến đi.
+                </p>
+            </div>
+
+            <div class="elite-service__hero-image">
+                <img
+                    src="../assets/hanhtrinh/Rectangle_9.png"
+                    alt="Hành trình liền mạch" />
+            </div>
+        </section>
+
+        <section class="content-p-H">
+            <h1 class="elite-service__hero-title-v2">Thông tin chi tiết</h1>
+            <p>
+                Dịch vụ Thượng lưu mặt đất quốc tế bao gồm: • Trợ lý Hàng
+                Không: + Trợ
+                lý 1: đón khách tại sảnh, hỗ trợ đẩy hành lý đến quầy check
+                in theo
+                hạng vé, đồng hành các khâu thủ tục xuất cảnh, an ninh soi
+                chiếu ưu
+                tiên nhanh chóng. + Trợ lý 2: đón khách sau bước an ninh soi
+                chiếu,
+                đưa khách đến phòng chờ SH Elite.
+            </p>
+            <p>
+                • Phòng chờ First Class Dịch vụ Thượng lưu mặt đất Lounge
+                Quốc tế Nội
+                Bài (Nhà ga T2), với các tiện ích đẳng cấp gồm Khu nghỉ ngơi
+                yên tĩnh
+                thư giãn tuyệt đối với nội thất sang trọng, Phòng vui chơi
+                trẻ em,
+                Phòng cầu nguyện đa tôn giáo, Phòng hút thuốc thông thoáng,
+                Phòng họp
+                riêng tư, Spa khu vực Spa, Phòng họp, Phòng tắm, Phòng nghỉ
+                ngơi
+                riêng, Phòng chiếu phim, Phòng thiền, Phòng vui chơi trẻ em…
+                cùng với
+                các tiện ích cá nhân hoá: - LCD chào mừng tên khách. - Đồ
+                uống và khăn
+                lạnh chào mừng. - Thực đơn a la carte riêng từng bữa sáng/
+                trưa/ tối
+                tuỳ chọn phục vụ tận bàn. - Thực đơn buffet canapé, có thể
+                set up lồng
+                teabreak tại bàn. - Thực đơn đồ uống tuỳ chọn với rượu vang,
+                cocktail,
+                mocktail, cafe các loại, cappuccino in ảnh cá nhân hoá. -
+                Đĩa trái cây
+                tráng miệng phục vụ tại bàn.
+            </p>
+        </section>
+    </section>
+
+</div>
