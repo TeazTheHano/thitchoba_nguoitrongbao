@@ -29,8 +29,10 @@ const App = {
     FOOTER: "components/footer.html",
     LANDING_HERO: "components/landing_hero.html",
       LANDING_1: 'components/landing_1.html',
+      LANDING_2: 'components/landing_2.html',
     HANHTRINH_HOME_HERO: "components/hanhtrinh_home_hero.html",
     HANHTRINH_HOME_SERVICES: "components/hanhtrinh_home_services.html",
+    LOGO_LOOP: "components/logo_loop.html"
   },
 
   // 3. HTML Cache Store
@@ -223,12 +225,20 @@ const landingPage = {
     //     // }
     // },
     {
-      target: "#intro1_placeholder",
-      component: COMPONENTS.INTRO1,
+      target: "#landing-hero_placeholder",
+      component: COMPONENTS.LANDING_HERO,
     },
        {
             target: '#landing-1_placeholder',
             component: COMPONENTS.LANDING_1,
+        },
+        {
+          target: "#landing-logo-loop-placeholder",
+          component: COMPONENTS.LOGO_LOOP
+        },
+ {
+            target: '#landing-2_placeholder',
+            component: COMPONENTS.LANDING_2,
         },
   ],
 };

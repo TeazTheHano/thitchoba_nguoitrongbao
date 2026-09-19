@@ -1,5 +1,7 @@
 <div style="background: var(--DarkBrown, #836954)">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet">
   <style>
+    
     #section_header {
       background: var(--DarkBrown, #836954);
       color: var(--White, #fff);
@@ -28,8 +30,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: var(--ui-spacing-md) var(--ui-spacing-7xl);
-      gap: var(--ui-spacing-md);
       width: fit-content;
     }
 
@@ -117,10 +117,10 @@
       id="section_header_top"
       class="ui-scrollbar-hide ui-row-h-between ui-w-full"
     >
-      <div id="logo_container">
-        <img src="/assets/MH Logo 1.png" alt="MSR Logo" />
-        <img src="/assets/TCB Logo 1.png" alt="TCB Logo" />
-      </div>
+      <a href="/" id="logo_container" class="content-p-type-2">
+        <img binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png" src="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png" alt="MSR Logo" />
+        <img binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png" src="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png" alt="TCB Logo" />
+      </a>
 
       <div id="menu_container_1" class="ui-flex-row ui-w-full ui-1440-hide">
         <a
@@ -201,8 +201,8 @@
 
         <a
           class="menu-container-1-items text-button button-type-1"
-          href="/pages/nghỉ-dưỡng"
-          binding-btnhref="/pages/nghỉ-dưỡng"
+          href="/pages/nghi-duong"
+          binding-btnhref="/pages/nghi-duong"
         >
           <svg
             width="24"
@@ -284,10 +284,10 @@
         </a>
       </div>
       <div class="left ui-flex-col ui-gap-2xs">
-        <p binding-description="Hotline: 1800 3398 - nhánh 2">
+        <p binding-subdescription="Hotline: 1800 3398 - nhánh 2">
           Hotline: 1800 3398 - nhánh 2
         </p>
-        <p binding-description="Email: tcbrewards@linkcare.vn">
+        <p binding-subdescription="Email: tcbrewards@linkcare.vn">
           Email: tcbrewards@linkcare.vn
         </p>
       </div>

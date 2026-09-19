@@ -1,0 +1,330 @@
+<div>
+    <style>
+        #hanhtrinh-detail-shElite .elite-service__hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            width: 100%;
+            min-height: 340px;
+            gap: var(--ui-spacing-5xl);
+            background: var(--LightBrown);
+            box-sizing: border-box;
+        }
+
+        /* =========================================================
+           HERO CONTENT
+           ========================================================= */
+
+        #hanhtrinh-detail-shElite .elite-service__hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        #hanhtrinh-detail-shElite .elite-service__hero-title,
+        #hanhtrinh-detail-shElite .elite-service__hero-title-v2 {
+            margin: 0 0 var(--ui-spacing-md);
+        }
+
+        #hanhtrinh-detail-shElite .elite-service__price {
+            margin: 0 0 var(--ui-spacing-md);
+            color: #9a744c;
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-body);
+            font-weight: var(--ui-font-weight-bold);
+            line-height: 1.4;
+        }
+
+        #hanhtrinh-detail-shElite .elite-service__hero-description {
+            width: 100%;
+            max-width: 520px;
+            margin: 0;
+            color: var(--Gray);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-body);
+            font-weight: var(--ui-font-weight-normal);
+            line-height: var(--ui-line-height-body);
+        }
+
+        /* =========================================================
+           HERO IMAGE
+           ========================================================= */
+
+        #hanhtrinh-detail-shElite .elite-service__hero-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: var(--ui-radius-xs);
+        }
+
+        #hanhtrinh-detail-shElite .elite-service__hero-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* =========================================================
+           ADDRESS SECTION
+           ========================================================= */
+
+        #hanhtrinh-detail-shElite .address-section {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: start;
+            gap: var(--ui-spacing-5xl);
+            background: var(--White);
+        }
+
+        /* =========================================================
+           ADDRESS LEFT
+           ========================================================= */
+
+        #hanhtrinh-detail-shElite .address-content {
+            min-width: 0;
+        }
+
+        #hanhtrinh-detail-shElite .address-title {
+            margin: 0 0 var(--ui-spacing-lg);
+            color: var(--Black);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-h6);
+            font-weight: var(--ui-font-weight-bold);
+            line-height: 1.3;
+        }
+
+        #hanhtrinh-detail-shElite .address-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--ui-spacing-md);
+        }
+
+        #hanhtrinh-detail-shElite .meta-item-address {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            margin: 0;
+            gap: var(--ui-spacing-2xs);
+            color: var(--Black);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-sm);
+            font-weight: var(--ui-font-weight-normal);
+            line-height: 1.45;
+        }
+
+        #hanhtrinh-detail-shElite .meta-item-address img {
+            display: block;
+            width: 16px;
+            height: 16px;
+            flex: 0 0 16px;
+            margin-top: 2px;
+            object-fit: contain;
+        }
+
+        #hanhtrinh-detail-shElite .meta-item-address span {
+            display: block;
+            min-width: 0;
+            color: var(--Black);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-md);
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        /* =========================================================
+           MAP
+           ========================================================= */
+
+        #hanhtrinh-detail-shElite .address-map {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: var(--ui-radius-xs);
+            background: var(--Gray);
+        }
+
+        #hanhtrinh-detail-shElite .address-map iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        #hanhtrinh-detail-shElite .address-map img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =========================================================
+           DESCRIPTION
+           ========================================================= */
+
+        #hanhtrinh-detail-shElite .detail-description {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* =========================================================
+           DESKTOP
+           ========================================================= */
+
+        @media (min-width: 1280px) {
+            #hanhtrinh-detail-shElite .elite-service__hero {
+                min-height: 340px;
+            }
+
+            #hanhtrinh-detail-shElite .elite-service__hero-image {
+                max-width: 100%;
+            }
+
+            #hanhtrinh-detail-shElite .address-section {
+                gap: var(--ui-spacing-5xl);
+            }
+        }
+
+        /* =========================================================
+           TABLET
+           ========================================================= */
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #hanhtrinh-detail-shElite .elite-service__hero {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                gap: var(--ui-spacing-xl);
+                min-height: 300px;
+            }
+
+            #hanhtrinh-detail-shElite .elite-service__hero-description {
+                font-size: var(--ui-font-size-sm);
+                line-height: var(--ui-line-height-body);
+            }
+
+            #hanhtrinh-detail-shElite .address-section {
+                gap: var(--ui-spacing-xl);
+            }
+
+            #hanhtrinh-detail-shElite .address-title {
+                font-size: var(--ui-font-size-caption);
+            }
+
+            #hanhtrinh-detail-shElite .meta-item-address {
+                font-size: var(--ui-font-size-caption);
+            }
+
+            #hanhtrinh-detail-shElite .meta-item-address img {
+                width: 14px;
+                height: 14px;
+                flex-basis: 14px;
+            }
+        }
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 767px) {
+            #hanhtrinh-detail-shElite .elite-service__hero {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--ui-spacing-xl);
+                min-height: 0;
+            }
+
+            #hanhtrinh-detail-shElite .elite-service__hero-content {
+                width: 100%;
+            }
+
+            #hanhtrinh-detail-shElite .elite-service__hero-description {
+                max-width: 100%;
+                font-size: var(--ui-font-size-sm);
+                line-height: var(--ui-line-height-body);
+            }
+
+            #hanhtrinh-detail-shElite .elite-service__hero-image {
+                width: 100%;
+                aspect-ratio: 16 / 10;
+            }
+
+            #hanhtrinh-detail-shElite .address-section {
+                display: flex;
+                flex-direction: column;
+                gap: var(--ui-spacing-xl);
+            }
+
+            #hanhtrinh-detail-shElite .address-content {
+                width: 100%;
+            }
+
+            #hanhtrinh-detail-shElite .address-map {
+                width: 100%;
+                aspect-ratio: 16 / 10;
+            }
+
+            #hanhtrinh-detail-shElite .meta-item-address {
+                width: 100%;
+                font-size: var(--ui-font-size-sm);
+                line-height: var(--ui-line-height-body);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hanhtrinh-detail-shElite .elite-service__hero {
+                gap: var(--ui-spacing-lg);
+            }
+
+            #hanhtrinh-detail-shElite .address-section {
+                gap: var(--ui-spacing-lg);
+            }
+
+            #hanhtrinh-detail-shElite .address-list {
+                gap: var(--ui-spacing-sm);
+            }
+        }
+    </style>
+
+    <section id="hanhtrinh-detail-shElite" repeat="detaildata">
+        <section class="content-p-H elite-service__hero">
+            <div class="elite-service__hero-content">
+                <h1 class="elite-service__hero-title">{{name}}</h1>
+
+                <div class="elite-service__price">Đơn giá: {{price}} VNĐ</div>
+
+                <p class="elite-service__hero-description">{{subDescription}}</p>
+            </div>
+
+            <div class="elite-service__hero-image">
+                <img src="{{images|getthumbnailbyindex:0|getPath:}}" alt="{{name}}" />
+            </div>
+        </section>
+        <section class="content-p-H address-section">
+            <div class="address-content">
+                <h2 class="address-title">Địa chỉ</h2>
+
+                <div class="address-list">
+                    <div class="meta-item-address" repeat="addresses">
+                        <img src="https://static.izzi.asia/images/2026/2/26/2602264399_address.png" alt="Địa chỉ" />
+
+                        <span> {{name}}: {{detailAddress}} </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="address-map">
+                <div repeat="addresses">
+                    <iframe width="100%" height="300" style="border: 0" loading="lazy" allowfullscreen
+                        src="https://maps.google.com/maps?q={{detailAddress}}&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed">
+                    </iframe>
+                    <div>
+                        <a href="https://www.google.com/maps/search/{{detailAddress}}" target="_blank">
+                            {{name}}: {{detailAddress}}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content-p-H detail-description">{{description}}</section>
+    </section>
+</div>

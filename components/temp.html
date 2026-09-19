@@ -1,0 +1,144 @@
+
+<div>
+    <style>
+        .product-list {
+            width: 100%;
+            background: var(--LightBrown);
+            box-sizing: border-box;
+        }
+
+        .product-list__header {
+            margin-bottom: var(--ui-spacing-xs);
+        }
+
+        .product-list__title {
+            margin: 0;
+            color: var(--Black);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-h6);
+            font-weight: var(--ui-font-weight-bold);
+            line-height: var(--ui-line-height-h6);
+        }
+
+        .product-grid {
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--ui-spacing-2xs);
+        }
+
+        .product-card {
+            position: relative;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--ui-radius-xs);
+            background: var(--White);
+            text-decoration: none;
+        }
+
+        .product-card__image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: var(--Gray);
+        }
+
+        .product-card__image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: var(--ui-transition);
+        }
+
+        .product-card:hover .product-card__image img {
+            transform: scale(1.03);
+        }
+
+        .product-card__content {
+            padding: var(--ui-spacing-xs);
+        }
+
+        .product-card__title {
+            margin: 0;
+            color: var(--Black);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-caption);
+            font-weight: var(--ui-font-weight-semibold);
+            line-height: 1.4;
+        }
+
+        .product-card__description {
+            margin: var(--ui-spacing-2xs) 0 0;
+            color: var(--Gray);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-caption);
+            font-weight: var(--ui-font-weight-normal);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 767px) {
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 639px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <section class="content-p-H product-list">
+
+        <div>Sản phẩm nè</div>
+        <!-- CATEGORY HIỆN TẠI -->
+ <div class="product-list__header" repeat="detaildata">
+    <h1 class="product-list__title">{{name}}</h1>
+    <!-- KHU VỰC THAY ĐỔI: So khớp categories.id với ID của category hiện tại -->
+<a
+    class="product-card"
+    href="/{{languageCode}}/san-pham/{{friendlyUrl}}"
+    repeat="product|param:categories.id:detaildata.id|from:paging|sort:createdDate:desc">
+<!-- KẾT THÚC THAY ĐỔI -->
+ {{name}}</a>
+</div>
+
+        <!-- DANH SÁCH SẢN PHẨM CỦA CATEGORY -->
+        <div class="product-grid">
+
+            <a
+                class="product-card"
+                href="/{{languageCode}}/san-pham/{{friendlyUrl}}"
+                repeat="product|param:categories.id:url|from:paging|sort:createdDate:desc">
+
+                <div class="product-card__image">
+
+                    <img
+                        src="{{images|getthumbnailbyindex:0|getPath:}}"
+                        alt="{{name}}">
+
+                </div>
+
+                <div class="product-card__content">
+
+                    <h2 class="product-card__title">
+                        {{name}}
+                    </h2>
+
+                    <p class="product-card__description">
+                        {{subDescription}}
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+</div>

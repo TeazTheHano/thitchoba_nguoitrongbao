@@ -560,6 +560,66 @@ function initLogoMarquees() {
     });
 }
 
+// KHU VỰC THAY ĐỔI: Khởi tạo marquee độc lập sau khi component logo được inject.
+async function initLogoLoop(section) {
+    if (!section || section.dataset.logoLoopReady === 'true') return;
+
+    const sourceImages = Array.from(section.querySelectorAll(':scope > img'));
+    if (!sourceImages.length) return;
+
+    await Promise.all(sourceImages.map((image) => {
+        if (image.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+            image.addEventListener('load', resolve, { once: true });
+            image.addEventListener('error', resolve, { once: true });
+        });
+    }));
+
+    const group = document.createElement('div');
+    group.className = 'logo-loop__group';
+    sourceImages.forEach((image) => group.appendChild(image));
+    section.appendChild(group);
+
+    // Clone đến khi một dải đủ phủ viewport, rồi nhân đôi dải để loop khít.
+    const minimumWidth = Math.max(section.clientWidth, window.innerWidth);
+    let copySets = 0;
+    while (group.scrollWidth < minimumWidth && copySets < 30) {
+        sourceImages.forEach((image) => group.appendChild(image.cloneNode(true)));
+        copySets += 1;
+    }
+
+    const track = document.createElement('div');
+    track.className = 'logo-loop__track';
+    track.append(group, group.cloneNode(true));
+    track.lastElementChild.setAttribute('aria-hidden', 'true');
+    section.appendChild(track);
+    section.dataset.logoLoopReady = 'true';
+}
+
+function initLogoLoops() {
+    document.querySelectorAll('.logo-loop').forEach(initLogoLoop);
+}
+
+function observeLogoLoops() {
+    initLogoLoops();
+
+    new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+                // Component có thể được inject sau lần render đầu hoặc khi đổi route SPA.
+                if (node.matches('.logo-loop')) initLogoLoop(node);
+                node.querySelectorAll?.('.logo-loop').forEach(initLogoLoop);
+            });
+        });
+    }).observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
+}
+// KẾT THÚC THAY ĐỔI
+
 // CALLING FUNCTIONs
 headerScroll();
 
@@ -798,6 +858,87 @@ function initFixStyle() {
     });
 }
 
+// KHU VỰC THAY ĐỔI: Đọc marker <strong> đang bị WYSIWYG escape thành text trong thẻ p.
+function findNearestGotoLink(markerParagraph) {
+    return Array.from(document.querySelectorAll('a[goto]')).find((link) => (
+        markerParagraph.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING
+    ));
+}
+
+function findAndInsert(root = document) {
+    if (!root) return;
+
+    const paragraphs = [];
+
+    if (root instanceof Element && root.matches('p')) {
+        paragraphs.push(root);
+    }
+    paragraphs.push(...root.querySelectorAll('p'));
+
+    paragraphs.forEach((paragraph) => {
+        const rawHtml = paragraph.textContent.trim();
+        if (!rawHtml.includes('<strong')) return;
+
+        // DOMParser chuyển chuỗi escaped thành DOM tạm để đọc attr hidegoto an toàn.
+        const parsed = new DOMParser().parseFromString(rawHtml, 'text/html');
+        const marker = parsed.querySelector('strong[hidegoto]');
+        if (!marker) return;
+
+        paragraph.classList.add('ui-d-none');
+
+        const hidegotoValue = marker.getAttribute('hidegoto');
+        const gotoLink = findNearestGotoLink(paragraph);
+        if (gotoLink && hidegotoValue) {
+            // Gán nguyên văn giá trị marker, không encode hoặc tự thêm prefix.
+            gotoLink.setAttribute('href', hidegotoValue);
+        }
+
+        // Tránh log lặp khi MutationObserver quét lại cùng một element.
+        if (paragraph.dataset.hidegotoLogged === 'true') return;
+        console.log('hidegoto:', hidegotoValue);
+        paragraph.dataset.hidegotoLogged = 'true';
+    });
+}
+
+function observeHideGotoMarkers() {
+    const startObserver = () => {
+        findAndInsert();
+        if (document.documentElement.dataset.hidegotoObserverReady === 'true') return;
+
+        new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes') {
+                    findAndInsert();
+                    return;
+                }
+
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        findAndInsert(node);
+                        if (node.matches('a[goto]')) findAndInsert();
+                    } else if (node.nodeType === Node.TEXT_NODE) {
+                        findAndInsert(node.parentElement);
+                    }
+                });
+            });
+        }).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['goto'],
+            childList: true,
+            subtree: true,
+        });
+
+        document.documentElement.dataset.hidegotoObserverReady = 'true';
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startObserver, { once: true });
+    } else {
+        startObserver();
+    }
+}
+// KẾT THÚC THAY ĐỔI
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFixStyle);
 } else {
@@ -805,6 +946,14 @@ if (document.readyState === 'loading') {
 }
 
 const afterLoad = () => {
+
+    if (typeof observeHideGotoMarkers === 'function') {
+        observeHideGotoMarkers();
+    }
+
+    if (typeof observeLogoLoops === 'function') {
+        observeLogoLoops();
+    }
 
     if (typeof initLogoMarquees === 'function') {
         runWhenExists('section-intro2-logoSlider', () => {

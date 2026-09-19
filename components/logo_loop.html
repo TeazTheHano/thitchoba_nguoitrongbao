@@ -1,0 +1,50 @@
+<div>
+  <style>
+    .logo-loop {
+        overflow: hidden;
+        padding: var(--ui-spacing-5xl) 0;
+        background: var(--DarkBrown, #836954);
+    }
+
+    .logo-loop__track,
+    .logo-loop__group {
+        display: flex;
+        flex: none;
+        align-items: center;
+        gap: calc(var(--ui-spacing-10xl) * 2);
+    }
+
+    .logo-loop__track {
+        width: max-content;
+        animation: logo-loop-scroll 24s linear infinite;
+        will-change: transform;
+    }
+
+    .logo-loop img {
+        height: 3.5rem;
+        width: auto;
+        opacity: 0.5;
+    }
+
+    @keyframes logo-loop-scroll {
+        to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .logo-loop__track { animation-play-state: paused; }
+    }
+  </style>
+
+  <section class="logo-loop" data-logo-loop>
+    <img
+      binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png"
+      src="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png"
+      alt="MSR Logo"
+    />
+    <img
+      binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png"
+      src="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png"
+      alt="TCB Logo"
+    />
+  </section>
+</div>

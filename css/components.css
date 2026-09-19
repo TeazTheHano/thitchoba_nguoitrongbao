@@ -57,6 +57,16 @@
     padding: var(--ui-spacing-xl);
 }
 
+.content-p-type-1 {
+    padding: var(--ui-spacing-8xl) var(--ui-spacing-lg);
+    gap: var(--ui-spacing-8xl);
+}
+
+.content-p-type-2 {
+    padding: var(--ui-spacing-sm) var(--ui-spacing-xl);
+    gap: var(--ui-spacing-sm);
+}
+
 
 .bg {
     position: absolute;

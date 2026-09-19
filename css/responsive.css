@@ -42,6 +42,14 @@
     #section_header #section_header_bottom .right {
         text-align: left;
     }
+
+    .text-0 {
+        font-size: 48px;
+    }
+
+    .text-title {
+        font-size: 32px;
+    }
 }
 
 [id*="content"] {
@@ -51,6 +59,16 @@
 @media (min-width: 768px) {
     .content-p-H {
         padding: var(--ui-spacing-7xl);
+    }
+
+    .content-p-type-1 {
+        padding: calc(var(--ui-spacing-14xl) * 2) var(--ui-spacing-7xl);
+        gap: calc(var(--ui-spacing-14xl) * 2);
+    }
+
+    .content-p-type-2 {
+           padding: var(--ui-spacing-md) var(--ui-spacing-7xl);
+      gap: var(--ui-spacing-md);
     }
 }
 
