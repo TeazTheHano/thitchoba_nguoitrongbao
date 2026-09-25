@@ -1,0 +1,114 @@
+<div>
+    <style>
+        /* KHU VỰC THAY ĐỔI: Đặt nút nền trong dialog để đóng bằng HTML thuần. */
+        #modal_contact_container #modal_contact[open] {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            width: 100vw;
+            height: 100dvh;
+            max-width: none;
+            max-height: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+
+        #modal_contact_container .bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        #modal_contact_container .bg button {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        #modal_contact_container .modal-panel {
+            position: relative;
+            z-index: 1;
+            width: min(520px, calc(100vw - 32px));
+            border-radius: 24px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        #modal_contact::backdrop {
+            background: transparent;
+        }
+        /* KẾT THÚC THAY ĐỔI */
+
+        #modal_contact_container .modal-title {
+            color: var(--White, #FFF);
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 135%;
+            /* 32.4px */
+            letter-spacing: -0.48px;
+        }
+
+        #modal_contact_container .modal-content {
+            padding: var(--ui-spacing-2xl);
+            text-align: center;
+        }
+
+        #modal_contact_container .ui-row-between-center {
+            border-radius: 24px 24px 0 0;
+            background: var(--Button, #926E4A);
+            padding: 24px 48px;
+        }
+
+
+    </style>
+
+    <section id="modal_contact_container" class="ui-relative">
+        <dialog id="modal_contact">
+            <!-- KHU VỰC THAY ĐỔI: Cả nền và nút X đóng dialog bằng method="dialog". -->
+            <form method="dialog" class="bg">
+                <button type="submit" aria-label="Đóng thông báo"></button>
+            </form>
+            <div class="modal-panel">
+            <div class="ui-row-between-center">
+                <p class="modal-title">Đặt đặc quyền ngay</p>
+
+                <form method="dialog">
+                <button type="submit" aria-label="Đóng thông báo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.707 6.70697L17.293 5.29297L12 10.586L6.70697 5.29297L5.29297 6.70697L10.586 12L5.29297 17.293L6.70697 18.707L12 13.414L17.293 18.707L18.707 17.293L13.414 12L18.707 6.70697Z"
+                            fill="white" />
+                    </svg>
+
+                </button>
+                </form>
+            </div>
+
+            <div class="modal-content ui-gap-md">
+                <p class="text-title">Vui lòng liên hệ tổng đài</p>
+                <p>
+                    Hotline <br>
+                    <b>1800 3398 - NHÁNH 3</b> <br>
+                    (Từ 06:30 đến 22:30, Thứ hai đến Chủ Nhật, kể cả các ngày Lễ Tết)
+                </p>
+                <p>
+                    Email
+                    <br><b>theinnerbytcbxmh@linkcare.vn</b>
+                </p>
+            </div>
+            </div>
+            <!-- KẾT THÚC THAY ĐỔI -->
+        </dialog>
+    </section>
+</div>

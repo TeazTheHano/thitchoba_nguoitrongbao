@@ -32,7 +32,8 @@ const App = {
       LANDING_2: 'components/landing_2.html',
     HANHTRINH_HOME_HERO: "components/hanhtrinh_home_hero.html",
     HANHTRINH_HOME_SERVICES: "components/hanhtrinh_home_services.html",
-    LOGO_LOOP: "components/logo_loop.html"
+    LOGO_LOOP: "components/logo_loop.html",
+    FIXMAP: "components/chi-tiet-san-pham.html"
   },
 
   // 3. HTML Cache Store
@@ -240,6 +241,10 @@ const landingPage = {
             target: '#landing-2_placeholder',
             component: COMPONENTS.LANDING_2,
         },
+      {
+        target: '#core_value-section_placeholder',
+        component: COMPONENTS.FIXMAP
+      }
   ],
 };
 

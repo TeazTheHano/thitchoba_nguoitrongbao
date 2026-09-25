@@ -1,3 +1,12 @@
+// KHU VỰC THAY ĐỔI: Lấy API dùng chung từ popup-utils.js.
+const {
+    observeAndTrigger, handleUnusedPopups, validatePopupForms,
+    copyMatchingFormFields, createCheckboxPopupController,
+    mapApiResponseToPopupAction, createTemporaryAlertWatch,
+    installApiResponseObservers
+} = PopupUtils;
+// KẾT THÚC THAY ĐỔI
+
 function trackMousePosition(elementQuery) {
     const trackElement = document.querySelector(elementQuery);
     if (!trackElement) return;
@@ -470,77 +479,6 @@ function formFillFromHtmlContent({
     })
 }
 
-function observeAndTrigger({
-    observeTargetQuery,
-    triggerCondition,
-    triggerSelector,
-    triggerEventOn,
-    triggerEventOff,
-    bounceDelay = 200,
-    onDelay = 0,
-    offDelay = 0
-}) {
-    const observeTarget = document.querySelector(observeTargetQuery);
-    const triggerElement = document.querySelector(triggerSelector);
-
-    if (!observeTarget || !triggerElement) {
-        console.error('❌ Missing target or trigger element');
-        return;
-    }
-
-    const onEvent = triggerEventOn || 'open-dialog';
-    const offEvent = triggerEventOff || onEvent;
-
-    function debounce(fn, delay) {
-        let timeoutId;
-        return (...args) => {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => fn(...args), delay);
-        };
-    }
-
-    let lastState = null; // 🔥 chống spam event
-
-    const handleMutation = () => {
-        // 🔥 FIX: dùng querySelector thay vì matches
-        const conditionMet = observeTarget.matches(triggerCondition)
-            || !!observeTarget.querySelector('h4.check:not(:empty)');
-
-        // tránh spam event
-        if (conditionMet === lastState) return;
-        lastState = conditionMet;
-
-        if (conditionMet) {
-            setTimeout(() => {
-                if (triggerElement.tagName === 'DIALOG' && !triggerElement.open) {
-                    triggerElement.showModal();
-                }
-                triggerElement.dispatchEvent(new Event(onEvent, { bubbles: true }));
-            }, onDelay);
-        } else {
-            setTimeout(() => {
-                if (triggerElement.tagName === 'DIALOG' && triggerElement.open) {
-                    triggerElement.close();
-                }
-                triggerElement.dispatchEvent(new Event(offEvent, { bubbles: true }));
-            }, offDelay);
-        }
-    };
-
-    const debouncedHandler = debounce(handleMutation, bounceDelay);
-
-    const observer = new MutationObserver(debouncedHandler);
-
-    observer.observe(observeTarget, {
-        childList: true,
-        subtree: true,
-        characterData: true,
-    });
-
-    return observer;
-}
-
-
 function initLogoMarquees() {
     const slider = document.getElementById('section-intro2-logoSlider');
     if (!slider) return;
@@ -962,7 +900,13 @@ const afterLoad = () => {
     }
 
     if (typeof handleUnusedPopups === 'function') {
-        handleUnusedPopups();
+        // KHU VỰC THAY ĐỔI: Giữ selector và ưu tiên prefix riêng của trang.
+        handleUnusedPopups({
+            root: document,
+            triggerSelector: '#section-dinning-detail1-content .cta label',
+            prefixes: ['popup-dinning', 'popup-privilege2', 'popup-privilege']
+        });
+        // KẾT THÚC THAY ĐỔI
     }
 
     if (typeof initPopupFormSync === 'function') {
@@ -972,96 +916,57 @@ const afterLoad = () => {
     if (typeof initLiveFormSync === 'function') {
         initLiveFormSync();
     }
+
 }
 
 afterLoad();
 
-function handleUnusedPopups() {
-    document.addEventListener('click', function (e) {
-        const label = e.target.closest('#section-dinning-detail1-content .cta label');
-        if (!label) return;
+// KHU VỰC THAY ĐỔI: Gom selector và tách validation khỏi thao tác submit.
+const POPUP_WRAPPER_SELECTOR = '#popupDinning, #popupPrivilege, #popupPrivilege2, #popupPrivilegeOpenPlus';
+const POPUP_SUBMIT_SELECTOR = '#popupDinning form button, #popupPrivilege form button, #popupPrivilege2 form button, #popupPrivilegeOpenPlus form button';
 
-        const forAttr = label.getAttribute('for');
-        if (!forAttr || forAttr.includes('{{')) return;
-
-        const prefixes = ['popup-dinning', 'popup-privilege2', 'popup-privilege'];
-        let activePrefix = null;
-
-        for (const prefix of prefixes) {
-            if (forAttr.startsWith(prefix)) {
-                activePrefix = prefix;
-                break;
-            }
-        }
-
-        if (activePrefix) {
-            prefixes.forEach(prefix => {
-                if (prefix !== activePrefix) {
-                    const containers = document.querySelectorAll(`.${prefix}-container`);
-                    containers.forEach(container => {
-                        container.remove();
-                    });
-                }
-            });
-        }
-    });
+function reportInvalidPopupForm(form) {
+    const type = form.getAttribute('type');
+    if (type) {
+        // Form nhiều bước phải hiện đúng bước trước khi trình duyệt báo lỗi.
+        const stepRadio = document.getElementById(`privilege2-step-${type}`);
+        if (stepRadio) stepRadio.checked = true;
+        setTimeout(() => form.reportValidity(), 50);
+    } else {
+        form.reportValidity();
+    }
 }
 
 function initPopupFormSync() {
     document.addEventListener('click', function (e) {
-        const btn = e.target.closest('#popupDinning form button, #popupPrivilege form button, #popupPrivilege2 form button, #popupPrivilegeOpenPlus form button');
+        const btn = e.target.closest(POPUP_SUBMIT_SELECTOR);
         if (!btn) return;
 
-        const wrapper = btn.closest('#popupDinning, #popupPrivilege, #popupPrivilege2, #popupPrivilegeOpenPlus');
+        const wrapper = btn.closest(POPUP_WRAPPER_SELECTOR);
         if (!wrapper) return;
 
-        const forms = wrapper.querySelectorAll('form');
-        let isValid = true;
+        if (!validatePopupForms(wrapper, reportInvalidPopupForm)) return;
 
-        for (const form of forms) {
-            if (!form.checkValidity()) {
-                isValid = false;
-
-                // Nếu là form nhiều bước, chuyển về bước bị lỗi trước khi hiển thị popup lỗi
-                const type = form.getAttribute('type');
-                if (type) {
-                    const stepRadio = document.getElementById(`privilege2-step-${type}`);
-                    if (stepRadio) stepRadio.checked = true;
-
-                    setTimeout(() => form.reportValidity(), 50);
-                } else {
-                    form.reportValidity();
-                }
-                break;
-            }
-        }
-
-        if (isValid) {
-            e.preventDefault();
-            // Sync lần cuối rồi log + submit
-            syncPopupFieldsToTarget(wrapper);
-            logFormGetEvoucher();
-            submitFormGetEvoucher();
-        }
+        e.preventDefault();
+        // Sync lần cuối rồi log + submit
+        syncPopupFieldsToTarget(wrapper);
+        logFormGetEvoucher();
+        submitFormGetEvoucher();
     });
 }
 
 // Live sync: mỗi khi user nhập/chọn trong popup → cập nhật ngay vào formGetEvoucher
 function initLiveFormSync() {
-    const popupSelectors = '#popupDinning, #popupPrivilege, #popupPrivilege2, #popupPrivilegeOpenPlus';
-
-    document.addEventListener('input', function (e) {
-        const wrapper = e.target.closest(popupSelectors);
+    const syncOnChange = function (e) {
+        const wrapper = e.target.closest(POPUP_WRAPPER_SELECTOR);
         if (!wrapper) return;
         syncPopupFieldsToTarget(wrapper);
-    });
+    };
 
-    document.addEventListener('change', function (e) {
-        const wrapper = e.target.closest(popupSelectors);
-        if (!wrapper) return;
-        syncPopupFieldsToTarget(wrapper);
-    });
+    document.addEventListener('input', syncOnChange);
+    document.addEventListener('change', syncOnChange);
 }
+// KẾT THÚC THAY ĐỔI
 
 // Đồng bộ giá trị từ popup wrapper → formGetEvoucher
 function syncPopupFieldsToTarget(wrapper) {
@@ -1071,38 +976,8 @@ function syncPopupFieldsToTarget(wrapper) {
         return;
     }
 
-    const targetInputs = targetForm.querySelectorAll('input, select, textarea');
-
-    targetInputs.forEach(targetInput => {
-        const id = targetInput.id;
-        const name = targetInput.name;
-
-        let sourceInput = null;
-
-        const sourceId = id ? id.replace('formGetEvoucher_', '') : null;
-
-        if (sourceId) {
-            sourceInput = wrapper.querySelector(`#${sourceId}`);
-        }
-
-        if (!sourceInput && name) {
-            sourceInput = wrapper.querySelector(`[name="${name}"]`);
-        }
-
-        if (sourceInput) {
-            // Nếu là <select> và target đang rỗng options → copy options trước rồi mới set value
-            // (đặc biệt quan trọng với #addresses vì options render động từ server)
-            if (
-                targetInput.tagName === 'SELECT' &&
-                sourceInput.tagName === 'SELECT' &&
-                targetInput.options.length <= 1 &&
-                sourceInput.options.length > 1
-            ) {
-                targetInput.innerHTML = sourceInput.innerHTML;
-            }
-            targetInput.value = sourceInput.value;
-        }
-    });
+    copyMatchingFormFields(wrapper, targetForm, 'formGetEvoucher_');
+    // Các ánh xạ dưới đây thuộc riêng form evoucher; giữ sau bước copy chung.
 
     //   Mapping đặc biệt: cardLast6Digits từ popup → startPin trong formGetEvoucher
     const cardLast6Input = wrapper.querySelector('[name="cardLast6Digits"]');
@@ -1157,6 +1032,7 @@ function syncPopupFieldsToTarget(wrapper) {
         }
     }
 }
+// KẾT THÚC THAY ĐỔI
 
 // Log toàn bộ data của formGetEvoucher ra console
 function logFormGetEvoucher() {
@@ -1227,30 +1103,23 @@ const ApiListener = (function () {
     }
     // =================================================================
 
-    let isListening = false;
-    let timeoutId = null;
-    const originalAlert = window.alert;
+    // KHU VỰC THAY ĐỔI: Listener giữ chính sách log, watch giữ trạng thái/timeout.
+    const responseWatch = createTemporaryAlertWatch({
+        win: window,
+        timeoutMs: 35000,
+        onSuppressedAlert: (message) => console.log("🚫 Đã chặn alert gốc:", message),
+        onTimeout: () => console.log("⏱️ Đã hết thời gian chờ API.")
+    });
 
     function startListening() {
         console.log("🎯 Bắt đầu lắng nghe phản hồi API & Chặn Alert mặc định...");
-        isListening = true;
-
-        window.alert = function (msg) {
-            console.log("🚫 Đã chặn alert gốc:", msg);
-        };
-
-        if (timeoutId) clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            stopListening();
-            console.log("⏱️ Đã hết thời gian chờ API.");
-        }, 35000);
+        responseWatch.start();
     }
 
     function stopListening() {
-        isListening = false;
-        if (timeoutId) clearTimeout(timeoutId);
-        window.alert = originalAlert;
+        responseWatch.stop();
     }
+    // KẾT THÚC THAY ĐỔI
 
     // Hàm xử lý dịch thuật dựa trên Message của BE
     function getTranslatedMessage(beMessage) {
@@ -1266,91 +1135,70 @@ const ApiListener = (function () {
         return beMessage;
     }
 
+    // KHU VỰC THAY ĐỔI: Cấu hình riêng của trang; controller có thể dùng lại với ID khác.
+    const popupController = createCheckboxPopupController({
+        root: document,
+        targets: CONFIG,
+        closeInputIds: ['popup-dinning-close', 'popup-privilege-close', 'popup-privilege2-close'],
+        translate: getTranslatedMessage
+    });
+
     // Hàm mở popup (Trả về true nếu mở thành công, false nếu không tìm thấy DOM)
     function triggerPopup(type, rawMessage) {
-        const target = CONFIG[type];
-        if (!target) return false;
-
-        const inputOpen = document.getElementById(target.inputOpenId);
-        const textNode = document.querySelector(target.textSelector);
-
-        // NẾU THIẾU POPUP HOẶC THIẾU NƠI HIỂN THỊ CHỮ -> BÁO THẤT BẠI ĐỂ DÙNG ALERT GỐC
-        if (!inputOpen || !textNode) {
+        if (!CONFIG[type]) return false;
+        const opened = popupController.open(type, rawMessage);
+        // Thiếu DOM vẫn trả false để handleResponseData dùng alert gốc.
+        if (!opened) {
             console.warn(`⚠️ Không tìm thấy thành phần Popup cho [${type.toUpperCase()}]. Chuyển hướng sang Alert mặc định.`);
             return false;
         }
 
-        // Tiến hành dịch câu thông báo trước khi đưa vào HTML
-        const translatedMessage = getTranslatedMessage(rawMessage);
-        if (translatedMessage) {
-            textNode.innerText = translatedMessage;
-        }
-
-        inputOpen.checked = true;
         console.log(`🚨 Đã kích hoạt Popup [${type.toUpperCase()}]`);
         return true; // Mở popup custom thành công
     }
 
     function closeAllModals() {
-        const closeIds = [
-            'popup-dinning-close',
-            'popup-privilege-close',
-            'popup-privilege2-close'
-        ];
-        closeIds.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.checked = true;
-        });
+        popupController.closeAll();
     }
+    // KẾT THÚC THAY ĐỔI
 
     function handleResponseData(resData) {
-        if (!isListening) return;
+        if (!responseWatch.isActive()) return;
 
+        // KHU VỰC THAY ĐỔI: Chỉ điều phối UI; mapper quyết định loại phản hồi.
+        const action = mapApiResponseToPopupAction(resData);
         let isPopupOpened = false;
-        const rawMessage = resData ? resData.Message : "";
 
-        if (resData && resData.Success === false) {
-            isPopupOpened = triggerPopup('error', rawMessage || "Err!");
+        if (action.type === 'error') {
+            isPopupOpened = triggerPopup('error', action.popupMessage);
         }
-        else if (resData && resData.Success === true) {
+        else if (action.type === 'success') {
             closeAllModals();
-            isPopupOpened = triggerPopup('success', rawMessage);
+            isPopupOpened = triggerPopup('success', action.popupMessage);
         }
 
         // 🔄 FALLBACK MECHANISM: Nếu triggerPopup thất bại (bằng false)
-        if (!isPopupOpened && rawMessage) {
+        if (!isPopupOpened && action.rawMessage) {
             stopListening(); // Khôi phục lại alert gốc ngay lập tức
 
             // Dịch câu thông báo trước khi alert ra cho đồng bộ ngôn ngữ luôn
-            const translatedAlertMsg = getTranslatedMessage(rawMessage);
-            originalAlert(translatedAlertMsg);
+            const translatedAlertMsg = getTranslatedMessage(action.rawMessage);
+            responseWatch.showOriginal(translatedAlertMsg);
         } else {
             // Nếu dùng popup custom thành công thì nhả alert sau 100ms như cũ
             setTimeout(stopListening, 100);
         }
+        // KẾT THÚC THAY ĐỔI
     }
 
-    // ĐÁNH CHẶN FETCH API
-    const originalFetch = window.fetch;
-    window.fetch = async function (...args) {
-        const response = await originalFetch(...args);
-        if (isListening) {
-            const clonedResponse = response.clone();
-            try { const resData = await clonedResponse.json(); handleResponseData(resData); } catch (e) { }
-        }
-        return response;
-    };
-
-    // ĐÁNH CHẶN XHR (AXIOS, JQUERY)
-    const originalSend = XMLHttpRequest.prototype.send;
-    XMLHttpRequest.prototype.send = function (...args) {
-        this.addEventListener('load', function () {
-            if (isListening) {
-                try { const resData = JSON.parse(this.responseText); handleResponseData(resData); } catch (e) { }
-            }
-        });
-        return originalSend.apply(this, args);
-    };
+    // KHU VỰC THAY ĐỔI: Cắm adapter một lần như trước, chỉ xử lý khi watch đang bật.
+    installApiResponseObservers({
+        win: window,
+        xhrPrototype: XMLHttpRequest.prototype,
+        isActive: responseWatch.isActive,
+        onResponse: handleResponseData
+    });
+    // KẾT THÚC THAY ĐỔI
 
     return { watch: startListening };
 })();

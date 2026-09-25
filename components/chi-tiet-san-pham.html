@@ -1,34 +1,30 @@
 <div>
     <style>
-        #hanhtrinh-detail-shElite .elite-service__hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            align-items: center;
+        #hanhtrinh-detail-shElite .elite-service__hero,
+        #hanhtrinh-detail-shElite .address-section,
+        #hanhtrinh-detail-shElite .detail-description {
             width: 100%;
-            min-height: 340px;
-            gap: var(--ui-spacing-5xl);
-            background: var(--LightBrown);
             box-sizing: border-box;
         }
 
-        /* =========================================================
-           HERO CONTENT
-           ========================================================= */
+        #hanhtrinh-detail-shElite .elite-service__hero {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: center;
+            gap: var(--ui-spacing-5xl);
+            background: var(--LightBrown);
+        }
 
         #hanhtrinh-detail-shElite .elite-service__hero-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-width: 0;
+            gap: var(--ui-spacing-md)
         }
 
-        #hanhtrinh-detail-shElite .elite-service__hero-title,
-        #hanhtrinh-detail-shElite .elite-service__hero-title-v2 {
-            margin: 0 0 var(--ui-spacing-md);
-        }
 
         #hanhtrinh-detail-shElite .elite-service__price {
-            margin: 0 0 var(--ui-spacing-md);
             color: #9a744c;
             font-family: var(--ui-font-family);
             font-size: var(--ui-font-size-body);
@@ -37,19 +33,13 @@
         }
 
         #hanhtrinh-detail-shElite .elite-service__hero-description {
-            width: 100%;
             max-width: 520px;
-            margin: 0;
             color: var(--Gray);
             font-family: var(--ui-font-family);
             font-size: var(--ui-font-size-body);
             font-weight: var(--ui-font-weight-normal);
             line-height: var(--ui-line-height-body);
         }
-
-        /* =========================================================
-           HERO IMAGE
-           ========================================================= */
 
         #hanhtrinh-detail-shElite .elite-service__hero-image {
             width: 100%;
@@ -66,164 +56,102 @@
             object-position: center;
         }
 
-        /* =========================================================
-           ADDRESS SECTION
-           ========================================================= */
+        #hanhtrinh-detail-shElite .elite-service__hero-content .button-type-2 {
+            width: fit-content;
 
-        #hanhtrinh-detail-shElite .address-section {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            align-items: start;
-            gap: var(--ui-spacing-5xl);
-            background: var(--White);
         }
 
-        /* =========================================================
-           ADDRESS LEFT
-           ========================================================= */
-
         #hanhtrinh-detail-shElite .address-content {
-            min-width: 0;
+            width: 100%;
         }
 
         #hanhtrinh-detail-shElite .address-title {
-            margin: 0 0 var(--ui-spacing-lg);
+            margin: 0 0 var(--ui-spacing-xl);
             color: var(--Black);
             font-family: var(--ui-font-family);
-            font-size: var(--ui-font-size-h6);
+            font-size: var(--ui-font-size-h4);
             font-weight: var(--ui-font-weight-bold);
             line-height: 1.3;
         }
 
-        #hanhtrinh-detail-shElite .address-list {
-            display: flex;
-            flex-direction: column;
-            gap: var(--ui-spacing-md);
-        }
-
-        #hanhtrinh-detail-shElite .meta-item-address {
-            display: flex;
-            align-items: flex-start;
+        #hanhtrinh-detail-shElite .lounge__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--ui-spacing-sm);
             width: 100%;
-            margin: 0;
-            gap: var(--ui-spacing-2xs);
-            color: var(--Black);
-            font-family: var(--ui-font-family);
-            font-size: var(--ui-font-size-sm);
-            font-weight: var(--ui-font-weight-normal);
-            line-height: 1.45;
         }
 
-        #hanhtrinh-detail-shElite .meta-item-address img {
+        #hanhtrinh-detail-shElite .lounge__card {
+            position: relative;
             display: block;
-            width: 16px;
-            height: 16px;
-            flex: 0 0 16px;
-            margin-top: 2px;
-            object-fit: contain;
-        }
-
-        #hanhtrinh-detail-shElite .meta-item-address span {
-            display: block;
-            min-width: 0;
-            color: var(--Black);
-            font-family: var(--ui-font-family);
-            font-size: var(--ui-font-size-md);
-            font-weight: inherit;
-            line-height: inherit;
-        }
-
-        /* =========================================================
-           MAP
-           ========================================================= */
-
-        #hanhtrinh-detail-shElite .address-map {
             width: 100%;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 16/10;
             overflow: hidden;
             border-radius: var(--ui-radius-xs);
             background: var(--Gray);
+            text-decoration: none;
         }
 
-        #hanhtrinh-detail-shElite .address-map iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        #hanhtrinh-detail-shElite .address-map img {
+        #hanhtrinh-detail-shElite .lounge__card img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            transition: var(--ui-transition);
         }
 
-        /* =========================================================
-           DESCRIPTION
-           ========================================================= */
+        #hanhtrinh-detail-shElite .lounge__card:hover img {
+            transform: scale(1.03);
+        }
 
-        #hanhtrinh-detail-shElite .detail-description {
-            width: 100%;
+        #hanhtrinh-detail-shElite .lounge__card-overlay {
+            position: absolute;
+            right: var(--ui-spacing-sm);
+            bottom: var(--ui-spacing-sm);
+            left: var(--ui-spacing-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(4px);
+            border-radius: var(--ui-radius-xs);
             box-sizing: border-box;
         }
 
-        /* =========================================================
-           DESKTOP
-           ========================================================= */
-
-        @media (min-width: 1280px) {
-            #hanhtrinh-detail-shElite .elite-service__hero {
-                min-height: 340px;
-            }
-
-            #hanhtrinh-detail-shElite .elite-service__hero-image {
-                max-width: 100%;
-            }
-
-            #hanhtrinh-detail-shElite .address-section {
-                gap: var(--ui-spacing-5xl);
-            }
+        #hanhtrinh-detail-shElite .text-subTitle {
+            margin: 0;
+            color: var(--Black);
+            font-family: var(--ui-font-family);
+            font-size: var(--ui-font-size-body);
+            font-weight: var(--ui-font-weight-normal);
+            line-height: 1.4;
+            text-align: center;
         }
 
-        /* =========================================================
-           TABLET
-           ========================================================= */
+        #hanhtrinh-detail-shElite .detail-description {
+            color: var(--Black);
+        }
 
         @media (min-width: 768px) and (max-width: 1023px) {
             #hanhtrinh-detail-shElite .elite-service__hero {
-                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
                 gap: var(--ui-spacing-xl);
-                min-height: 300px;
             }
 
             #hanhtrinh-detail-shElite .elite-service__hero-description {
                 font-size: var(--ui-font-size-sm);
-                line-height: var(--ui-line-height-body);
             }
 
-            #hanhtrinh-detail-shElite .address-section {
-                gap: var(--ui-spacing-xl);
+            #hanhtrinh-detail-shElite .lounge__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            #hanhtrinh-detail-shElite .address-title {
-                font-size: var(--ui-font-size-caption);
-            }
-
-            #hanhtrinh-detail-shElite .meta-item-address {
-                font-size: var(--ui-font-size-caption);
-            }
-
-            #hanhtrinh-detail-shElite .meta-item-address img {
-                width: 14px;
-                height: 14px;
-                flex-basis: 14px;
+            #hanhtrinh-detail-shElite .text-subTitle {
+                font-size: var(--ui-font-size-sm);
             }
         }
-
-        /* =========================================================
-           MOBILE
-           ========================================================= */
 
         @media (max-width: 767px) {
             #hanhtrinh-detail-shElite .elite-service__hero {
@@ -231,7 +159,6 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: var(--ui-spacing-xl);
-                min-height: 0;
             }
 
             #hanhtrinh-detail-shElite .elite-service__hero-content {
@@ -239,9 +166,8 @@
             }
 
             #hanhtrinh-detail-shElite .elite-service__hero-description {
-                max-width: 100%;
+                max-width: none;
                 font-size: var(--ui-font-size-sm);
-                line-height: var(--ui-line-height-body);
             }
 
             #hanhtrinh-detail-shElite .elite-service__hero-image {
@@ -249,82 +175,123 @@
                 aspect-ratio: 16 / 10;
             }
 
-            #hanhtrinh-detail-shElite .address-section {
-                display: flex;
-                flex-direction: column;
-                gap: var(--ui-spacing-xl);
+            #hanhtrinh-detail-shElite .lounge__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            #hanhtrinh-detail-shElite .address-content {
-                width: 100%;
+
+            #hanhtrinh-detail-shElite .lounge__card-overlay {
+                right: var(--ui-spacing-xs);
+                bottom: var(--ui-spacing-xs);
+                left: var(--ui-spacing-xs);
+
+                min-height: 52px;
+                padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
             }
 
-            #hanhtrinh-detail-shElite .address-map {
-                width: 100%;
-                aspect-ratio: 16 / 10;
-            }
-
-            #hanhtrinh-detail-shElite .meta-item-address {
-                width: 100%;
+            #hanhtrinh-detail-shElite .text-subTitle {
                 font-size: var(--ui-font-size-sm);
-                line-height: var(--ui-line-height-body);
             }
         }
 
         @media (max-width: 480px) {
+
+
             #hanhtrinh-detail-shElite .elite-service__hero {
                 gap: var(--ui-spacing-lg);
             }
 
-            #hanhtrinh-detail-shElite .address-section {
-                gap: var(--ui-spacing-lg);
-            }
-
-            #hanhtrinh-detail-shElite .address-list {
+            #hanhtrinh-detail-shElite .lounge__grid {
+                grid-template-columns: 1fr;
                 gap: var(--ui-spacing-sm);
             }
         }
     </style>
-
     <section id="hanhtrinh-detail-shElite" repeat="detaildata">
         <section class="content-p-H elite-service__hero">
             <div class="elite-service__hero-content">
                 <h1 class="elite-service__hero-title">{{name}}</h1>
 
-                <div class="elite-service__price">Đơn giá: {{price}} VNĐ</div>
+                <div class="elite-service__price">Đơn giá: {{price|formatmoney}}</div>
 
                 <p class="elite-service__hero-description">{{subDescription}}</p>
+                <a class="button-type-2" href binding-btnhref>
+                    <span binding-btntext="Khám phá đặc quyền">Sử dụng đặc
+                        quyền</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M17.414 10.586L13.121 6.293L11.707 7.707L15 11H5V13H15L11.707 16.293L13.121 17.707L17.414 13.414C17.7889 13.0389 17.9996 12.5303 17.9996 12C17.9996 11.4697 17.7889 10.9611 17.414 10.586Z"
+                            fill="white"></path>
+                    </svg>
+                </a>
             </div>
 
             <div class="elite-service__hero-image">
                 <img src="{{images|getthumbnailbyindex:0|getPath:}}" alt="{{name}}" />
             </div>
         </section>
+
         <section class="content-p-H address-section">
             <div class="address-content">
-                <h2 class="address-title">Địa chỉ</h2>
+                <h2 class="address-title">Danh sách địa chỉ</h2>
 
-                <div class="address-list">
-                    <div class="meta-item-address" repeat="addresses">
-                        <img src="https://static.izzi.asia/images/2026/2/26/2602264399_address.png" alt="Địa chỉ" />
+                <div class="lounge__grid">
+                    <a href="#address-{{id}}" class="lounge__card" repeat="addresses">
+                        <img src="{{images|getthumbnailbyindex:0|getPath:}}" alt="{{name}}">
+                        <!-- <img
+              src="{{images|getPath:}}"
+              alt="{{name}}"> -->
+                        <!-- <img
+              src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=80"
+              alt="{{name}}" /> -->
 
-                        <span> {{name}}: {{detailAddress}} </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="address-map">
-                <div repeat="addresses">
-                    <iframe width="100%" height="300" style="border: 0" loading="lazy" allowfullscreen
-                        src="https://maps.google.com/maps?q={{detailAddress}}&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed">
-                    </iframe>
-                    <div>
-                        <a href="https://www.google.com/maps/search/{{detailAddress}}" target="_blank">
-                            {{name}}: {{detailAddress}}</a>
-                    </div>
+                        <div class="lounge__card-overlay">
+                            <p class="text-subTitle">{{name}}</p>
+                            <!-- <div>{{images}}</div> -->
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
-        <section class="content-p-H detail-description">{{description}}</section>
+
+        <div class="content-p-H detail-description">
+            {{description}}
+        </div>
+
+        <!-- =========================================================
+     ADDRESS DETAIL
+     ========================================================= -->
+        <!-- 
+        <section
+            class="content-p-H elite-service__hero address-detail-section"
+            repeat="addresses"
+            id="address-{{id}}">
+
+            <div class="elite-service__hero-content">
+
+                <h2 class="elite-service__hero-title">
+                    {{name}}
+                </h2>
+
+                <div class="elite-service__price">
+                    Địa chỉ chi tiết: {{detailAddress}}
+                </div>
+
+                <p class="elite-service__hero-description">
+                    {{description}}
+                </p>
+
+            </div>
+
+            <div class="elite-service__hero-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=80"
+                    alt="{{name}}" />
+
+            </div>
+
+        </section> -->
     </section>
+
 </div>

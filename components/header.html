@@ -1,7 +1,8 @@
-<div style="background: var(--DarkBrown, #836954)">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet">
+<div style="background: var(--DarkBrown, #836954)" id="8f6c8a70-09ea-4910-b439-433d9bc11d3e">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Noto+Sans+Mono:wght@100..900&amp;display=swap"
+    rel="stylesheet">
   <style>
-    
     #section_header {
       background: var(--DarkBrown, #836954);
       color: var(--White, #fff);
@@ -24,6 +25,8 @@
 
     #section_header #section_header_top {
       border: 2px solid var(--Stroke);
+      border-left-width: 1px;
+      border-right-width: 1px;
     }
 
     #section_header #logo_container {
@@ -48,12 +51,13 @@
     #section_header .button-type-1 {
       padding: var(--ui-spacing-md) var(--ui-spacing-md);
       width: 100%;
-      border: 2px solid var(--Stroke);
-      border-left-width: 2px;
-      border-right-width: 2px;
-      border-top-width: 0px;
-      border-bottom-width: 0px;
-      margin-inline: -1px;
+    }
+
+    #section_header #section_header_top a,
+    #section_header #section_header_top label {
+      border: 1px solid var(--Stroke);
+      border-top-width: 0;
+      border-bottom-width: 0;
     }
 
     #section_header #section_header_bottom {
@@ -72,25 +76,19 @@
       gap: var(--ui-spacing-lg);
     }
 
-    #section_header
-      input[type="checkbox"]#menu-toggle:checked
-      ~ #section_header_bottom {
+    #section_header #section_header_bottom .right a:hover {
+      text-decoration: underline;
+    }
+
+    #section_header input[type="checkbox"]#menu-toggle:checked~#section_header_bottom {
       display: flex;
     }
 
-    #section_header
-      input[type="checkbox"]#menu-toggle:not(:checked)
-      ~ #section_header_top
-      label[for="menu-toggle"]
-      svg:last-child {
+    #section_header input[type="checkbox"]#menu-toggle:not(:checked)~#section_header_top label[for="menu-toggle"] svg:last-child {
       display: none;
     }
 
-    #section_header
-      input[type="checkbox"]#menu-toggle:checked
-      ~ #section_header_top
-      label[for="menu-toggle"]
-      svg:first-of-type {
+    #section_header input[type="checkbox"]#menu-toggle:checked~#section_header_top label[for="menu-toggle"] svg:first-of-type {
       display: none !important;
     }
 
@@ -98,72 +96,49 @@
       position: relative;
     }
 
-    #section_header
-      input[type="checkbox"]#menu-toggle:checked
-      ~ #section_header_top
-      label[for="menu-toggle"]::after {
+    #section_header input[type="checkbox"]#menu-toggle:checked~#section_header_top label[for="menu-toggle"]::after {
       content: "";
       position: absolute;
       inset: 0;
       background: #ffffff1a;
-      pointer-events: none; /* Không che thao tác click vào label */
+      pointer-events: none;
+      /* Không che thao tác click vào label */
     }
   </style>
 
   <section id="section_header" class="ui-scrollbar-hide ui-w-full">
-    <input type="checkbox" id="menu-toggle" class="ui-menu-toggle ui-d-none" />
+    <input type="checkbox" id="menu-toggle" class="ui-menu-toggle ui-d-none">
 
-    <div
-      id="section_header_top"
-      class="ui-scrollbar-hide ui-row-h-between ui-w-full"
-    >
+    <div id="section_header_top" class="ui-scrollbar-hide ui-row-h-between ui-w-full">
       <a href="/" id="logo_container" class="content-p-type-2">
-        <img binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png" src="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png" alt="MSR Logo" />
-        <img binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png" src="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png" alt="TCB Logo" />
+        <img binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png"
+          src="https://static.izzi.asia/images/2026/9/18/2609185692_MHLogo1.png" alt="MSR Logo">
+        <img binding-imgpath="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png"
+          src="https://static.izzi.asia/images/2026/9/18/2609183044_TCBLogo1.png" alt="TCB Logo">
       </a>
 
       <div id="menu_container_1" class="ui-flex-row ui-w-full ui-1440-hide">
-        <a
-          class="menu-container-1-items text-button button-type-1"
-          href="/pages/suc-khoe"
-          binding-btnhref="/pages/suc-khoe"
-        >
-          <svg
-            width="24"
-            height="22"
-            viewBox="0 0 24 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <a class="menu-container-1-items text-button button-type-1" href="/pages/suc-khoe"
+          binding-btnhref="/pages/suc-khoe">
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M24 7C24 8.464 23.497 10.063 22.506 11.753C22.412 11.912 22.245 12 22.074 12C21.987 12 21.9 11.978 21.821 11.931C21.583 11.791 21.503 11.485 21.642 11.247C22.542 9.712 22.999 8.284 22.999 7C22.999 3.86 20.378 1 17.499 1C15.145 1 13.94 1.927 12.816 2.959L8.525 7.207C7.936 7.796 7.826 8.708 8.272 9.327C8.555 9.72 8.971 9.957 9.444 9.995C9.91 10.03 10.368 9.865 10.698 9.535L15.148 5.145C15.344 4.951 15.662 4.953 15.855 5.15C16.049 5.346 16.047 5.663 15.851 5.857L14.415 7.274L19.732 11.941C20.696 12.786 20.938 14.198 20.295 15.226C19.899 15.86 19.251 16.286 18.52 16.393C18.285 16.428 18.048 16.43 17.816 16.397C17.946 17.013 17.853 17.663 17.514 18.206C17.117 18.841 16.469 19.266 15.738 19.373C15.391 19.424 15.044 19.402 14.716 19.312C14.756 19.826 14.645 20.346 14.364 20.793C13.968 21.427 13.32 21.853 12.589 21.96C12.466 21.978 12.344 21.987 12.222 21.987C11.615 21.987 11.025 21.768 10.563 21.362L7.322 18.454C2.395 14.001 0 10.255 0 7C0 3.271 3.038 0 6.5 0C7.66 0 8.819 0.376 9.854 1.088C10.082 1.245 10.139 1.556 9.983 1.783C9.827 2.012 9.516 2.069 9.288 1.912C8.421 1.315 7.457 1 6.501 1C3.623 1 1.001 3.86 1.001 7C1.001 9.915 3.353 13.519 7.992 17.711L11.227 20.614C11.558 20.905 12.002 21.034 12.445 20.971C12.892 20.906 13.274 20.654 13.518 20.263C13.904 19.647 13.743 18.785 13.143 18.259L9.807 15.088C9.607 14.898 9.599 14.582 9.789 14.382C9.978 14.181 10.295 14.173 10.495 14.362L14.386 18.035C14.707 18.317 15.152 18.451 15.594 18.384C16.041 18.319 16.423 18.067 16.668 17.676C17.053 17.061 16.892 16.199 16.292 15.673L12.577 12.31C12.373 12.125 12.356 11.81 12.54 11.605C12.723 11.399 13.038 11.382 13.245 11.565L17.156 15.046C17.489 15.337 17.931 15.468 18.376 15.404C18.823 15.338 19.204 15.087 19.449 14.696C19.834 14.08 19.673 13.218 19.073 12.693L13.702 7.978L11.404 10.245C10.868 10.781 10.124 11.05 9.365 10.993C8.606 10.931 7.912 10.538 7.462 9.912C6.733 8.9 6.887 7.433 7.821 6.499L12.127 2.237C13.365 1.099 14.788 0.00100005 17.5 0.00100005C20.963 0.00100005 24 3.272 24 7.001V7Z"
-              fill="white"
-            />
+              fill="white"></path>
           </svg>
           <p binding-btntext="Sức khỏe">Sức khỏe</p>
         </a>
 
-        <a
-          class="menu-container-1-items text-button button-type-1"
-          href="/pages/hanh-trinh"
-          binding-btnhref="/pages/hanh-trinh"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <a class="menu-container-1-items text-button button-type-1" href="/pages/hanh-trinh"
+          binding-btnhref="/pages/hanh-trinh">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_465_666)">
               <path
                 d="M21.5001 10H17.8851L13.5071 1.303C13.0691 0.499 12.2281 0 11.3121 0H11.1291C10.4531 0 9.83315 0.31 9.42715 0.851C9.02115 1.391 8.89615 2.074 9.08415 2.722L11.1931 10H7.12215C6.18715 10 5.30815 9.636 4.64715 8.975L3.23015 7.558C2.64315 6.972 1.74515 6.833 0.997146 7.216C0.554146 7.444 0.229146 7.84 0.0821463 8.333C-0.0738537 8.857 -0.00685373 9.432 0.265146 9.907L1.87915 12.732C2.67915 14.13 4.17615 15 5.78615 15H11.0381L8.64815 20.848C8.37915 21.565 8.48015 22.368 8.91515 22.996C9.35115 23.625 10.0681 24 10.8331 24C11.8391 24 12.7641 23.451 13.2321 22.592L17.9681 15H21.4971C22.8751 15 23.9971 13.879 23.9971 12.5C23.9971 11.121 22.8751 10 21.4971 10H21.5001ZM10.0451 2.444C9.94515 2.099 10.0111 1.737 10.2271 1.451C10.4421 1.164 10.7711 1 11.1291 1H11.3121C11.8621 1 12.3661 1.3 12.6211 1.767L16.7651 10H12.2341L10.0451 2.444ZM21.5001 14H17.6931C17.5211 14 17.3601 14.089 17.2691 14.235L12.3711 22.088C12.0641 22.65 11.4751 23 10.8351 23C10.3911 23 9.99215 22.791 9.73915 22.426C9.48715 22.062 9.43115 21.614 9.58115 21.213L12.2471 14.69C12.3101 14.536 12.2921 14.36 12.1991 14.222C12.1061 14.083 11.9501 14 11.7841 14H5.78715C4.53515 14 3.37015 13.324 2.74815 12.236L1.13415 9.411C0.997146 9.171 0.963146 8.882 1.04115 8.617C1.10915 8.388 1.25515 8.208 1.45315 8.106C1.59415 8.034 1.74215 7.999 1.88815 7.999C2.12215 7.999 2.34815 8.09 2.52415 8.265L3.94115 9.682C4.79115 10.533 5.92115 11 7.12315 11H21.5001C22.3271 11 23.0001 11.673 23.0001 12.5C23.0001 13.327 22.3271 14 21.5001 14Z"
-                fill="white"
-              />
+                fill="white"></path>
             </g>
             <defs>
               <clipPath id="clip0_465_666">
-                <rect width="24" height="24" fill="white" />
+                <rect width="24" height="24" fill="white"></rect>
               </clipPath>
             </defs>
           </svg>
@@ -171,27 +146,17 @@
           <p binding-btntext="Hành trình">Hành trình</p>
         </a>
 
-        <a
-          class="menu-container-1-items text-button button-type-1"
-          href="/pages/am-thuc"
-          binding-btnhref="/pages/am-thuc"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <a class="menu-container-1-items text-button button-type-1" href="/pages/am-thuc"
+          binding-btnhref="/pages/am-thuc">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_465_675)">
               <path
                 d="M17.484 7.045C17.218 6.948 16.918 7.002 16.655 7.19C15.479 8.231 14.129 10.426 14.002 13.332C13.948 15.721 14.962 17.909 17 19.843V23.5C17 23.776 17.224 24 17.5 24C17.776 24 18 23.776 18 23.5C17.986 23.379 18.028 7.725 17.985 7.616C17.918 7.349 17.731 7.135 17.484 7.045ZM15.002 13.363C15.101 10.933 16.198 9.126 17 8.25V18.417C15.632 16.869 14.961 15.171 15.002 13.364V13.363ZM9 14.949V23.5C9 23.776 8.776 24 8.5 24C8.224 24 8 23.776 8 23.5V14.949C6.308 14.704 5 13.258 5 11.5V7.5C5 7.224 5.224 7 5.5 7C5.776 7 6 7.224 6 7.5V11.5C6 12.707 6.86 13.717 8 13.949V7.5C8 7.224 8.224 7 8.5 7C8.776 7 9 7.224 9 7.5V13.949C10.14 13.717 11 12.707 11 11.5V7.5C11 7.224 11.224 7 11.5 7C11.776 7 12 7.224 12 7.5V11.5C12 13.258 10.692 14.704 9 14.949ZM14.988 23.119C15.048 23.389 14.878 23.655 14.608 23.715C13.756 23.903 12.879 23.999 12 23.999C11.825 23.999 11.651 23.996 11.478 23.988C11.202 23.976 10.988 23.742 11 23.467C11.012 23.192 11.256 22.97 11.521 22.989C12.477 23.028 13.455 22.946 14.391 22.739C14.673 22.682 14.928 22.85 14.988 23.119ZM24 11.999C24 14.997 22.889 17.868 20.869 20.082C20.683 20.286 20.367 20.301 20.163 20.115C19.959 19.929 19.944 19.613 20.131 19.408C21.981 17.379 23 14.747 23 11.999C23 5.934 18.065 0.999 12 0.999C5.935 0.999 1 5.935 1 12C1 15.627 2.788 19.02 5.783 21.076C6.011 21.232 6.068 21.543 5.912 21.771C5.815 21.912 5.659 21.988 5.499 21.988C5.401 21.988 5.303 21.96 5.216 21.9C1.95 19.658 0 15.957 0 12C0 5.383 5.383 0 12 0C18.617 0 24 5.383 24 12V11.999Z"
-                fill="white"
-              />
+                fill="white"></path>
             </g>
             <defs>
               <clipPath id="clip0_465_675">
-                <rect width="24" height="24" fill="white" />
+                <rect width="24" height="24" fill="white"></rect>
               </clipPath>
             </defs>
           </svg>
@@ -199,27 +164,17 @@
           <p binding-btntext="Ẩm thực">Ẩm thực</p>
         </a>
 
-        <a
-          class="menu-container-1-items text-button button-type-1"
-          href="/pages/nghi-duong"
-          binding-btnhref="/pages/nghi-duong"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <a class="menu-container-1-items text-button button-type-1" href="/pages/nghi-duong"
+          binding-btnhref="/pages/nghỉ-dưỡng">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_465_684)">
               <path
                 d="M24 18.5C24 18.224 23.776 18 23.5 18H9.5C7.57 18 6 16.43 6 14.5V4.5C6 2.019 3.981 0 1.5 0H0.5C0.224 0 0 0.224 0 0.5C0 0.776 0.224 1 0.5 1H1.5C3.43 1 5 2.57 5 4.5V14.5C5 16.463 6.263 18.136 8.019 18.749C7.395 19.299 7 20.104 7 21C7 22.654 8.346 24 10 24C11.654 24 13 22.654 13 21C13 20.232 12.71 19.531 12.234 19H18.766C18.29 19.531 18 20.232 18 21C18 22.654 19.346 24 21 24C22.654 24 24 22.654 24 21C24 20.232 23.71 19.531 23.234 19H23.5C23.776 19 24 18.776 24 18.5ZM12 21C12 22.103 11.103 23 10 23C8.897 23 8 22.103 8 21C8 19.897 8.897 19 10 19C11.103 19 12 19.897 12 21ZM23 21C23 22.103 22.103 23 21 23C19.897 23 19 22.103 19 21C19 19.897 19.897 19 21 19C22.103 19 23 19.897 23 21ZM20.5 4H20V2.5C20 1.122 18.879 0 17.5 0H14.5C13.121 0 12 1.122 12 2.5V4H11.5C9.57 4 8 5.57 8 7.5V12.5C8 14.43 9.57 16 11.5 16H20.5C22.43 16 24 14.43 24 12.5V7.5C24 5.57 22.43 4 20.5 4ZM13 2.5C13 1.673 13.673 1 14.5 1H17.5C18.327 1 19 1.673 19 2.5V4H13V2.5ZM19 5V15H13V5H19ZM9 12.5V7.5C9 6.122 10.121 5 11.5 5H12V15H11.5C10.121 15 9 13.878 9 12.5ZM23 12.5C23 13.878 21.879 15 20.5 15H20V5H20.5C21.879 5 23 6.122 23 7.5V12.5Z"
-                fill="white"
-              />
+                fill="white"></path>
             </g>
             <defs>
               <clipPath id="clip0_465_684">
-                <rect width="24" height="24" fill="white" />
+                <rect width="24" height="24" fill="white"></rect>
               </clipPath>
             </defs>
           </svg>
@@ -229,54 +184,32 @@
       </div>
 
       <div id="header_tool" class="ui-flex-row">
-        <a
-          href="/en-US"
-          class="ui-center ui-gap-2xs padding-items button-type-1 ui-mobile-hide"
-        >
+        <a href="/en-US" class="ui-center ui-gap-2xs padding-items button-type-1 ui-mobile-hide">
           <p style="color: #ffffff1a">EN</p>
           <span>|</span>
           <p class="text-button">VN</p>
         </a>
 
-        <label
-          for="menu-toggle"
-          class="menu-container-1-items text-button button-type-1"
-        >
+        <label for="menu-toggle" class="menu-container-1-items text-button button-type-1">
           <p binding-btntext="Menu">Menu</p>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M20 6.5H4V7.5H20V6.5Z" fill="white" />
-            <path d="M20 11.5H4V12.5H20V11.5Z" fill="white" />
-            <path d="M20 16.5H4V17.5H20V16.5Z" fill="white" />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6.5H4V7.5H20V6.5Z" fill="white"></path>
+            <path d="M20 11.5H4V12.5H20V11.5Z" fill="white"></path>
+            <path d="M20 16.5H4V17.5H20V16.5Z" fill="white"></path>
           </svg>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M18.707 6.707L17.293 5.293L12 10.586L6.70697 5.293L5.29297 6.707L10.586 12L5.29297 17.293L6.70697 18.707L12 13.414L17.293 18.707L18.707 17.293L13.414 12L18.707 6.707Z"
-              fill="white"
-            />
+              fill="white"></path>
           </svg>
         </label>
       </div>
     </div>
 
-    <div
-      id="section_header_bottom"
-      class="ui-scrollbar-hide ui-row-h-between ui-w-full"
-    >
+    <div id="section_header_bottom" class="ui-scrollbar-hide ui-row-h-between ui-w-full">
       <div class="ui-mobile-show ui-d-none">
-        <hr style="background-color: white; height: 1px;" />
-        <br/>
+        <hr style="background-color: white; height: 1px;">
+        <br>
         <a href="/en-US" class="ui-center ui-m-auto ui-gap-2xs">
           <p style="color: #ffffff1a">EN</p>
           <span>|</span>
@@ -284,43 +217,20 @@
         </a>
       </div>
       <div class="left ui-flex-col ui-gap-2xs">
-        <p binding-subdescription="Hotline: 1800 3398 - nhánh 2">
-          Hotline: 1800 3398 - nhánh 2
-        </p>
-        <p binding-subdescription="Email: tcbrewards@linkcare.vn">
-          Email: tcbrewards@linkcare.vn
-        </p>
+        <p binding-subdescription="          Hotline: 1800 3398 - nhánh 2        "> Hotline: 1800 3398 - nhánh 2 </p>
+        <p binding-subdescription="          Email: tcbrewards@linkcare.vn        "> Email: tcbrewards@linkcare.vn </p>
       </div>
-      <br/>
+      <br>
       <div class="right ui-flex-col ui-gap-2xs ui-text-right">
-        <a
-          class="text-button"
-          href=""
-          binding-btnhref=""
-          binding-btntext="Trang chủ"
-          >Trang chủ</a
-        >
-        <a
-          class="text-button"
-          href=""
-          binding-btnhref=""
-          binding-btntext="Câu chuyện thương hiệu"
-          >Câu chuyện thương hiệu</a
-        >
-        <a
-          class="text-button"
-          href=""
-          binding-btnhref=""
-          binding-btntext="Các đặc quyền của chúng tôi"
-          >Các đặc quyền của chúng tôi</a
-        >
-        <a
-          class="text-button"
-          href=""
-          binding-btnhref=""
-          binding-btntext="Liên hệ"
-          >Liên hệ</a
-        >
+        <a class="text-button" href="/vi-VN" binding-btnhref="/vi-VN" binding-btntext="Trang chủ">Trang chủ</a>
+        <a class="text-button" href="/vi-VN#landing_1" binding-btnhref="/vi-VN#landing_1"
+          binding-btntext="Câu chuyện thương hiệu">Câu chuyện thương
+          hiệu</a>
+        <a class="text-button" href="/vi-VN#landing_2" binding-btnhref="/vi-VN#landing_2"
+          binding-btntext="Các đặc quyền của chúng tôi">Các đặc quyền
+          của chúng tôi</a>
+        <a class="text-button" href="#footerContact" binding-btnhref="#footerContact" binding-btntext="Liên hệ">Liên
+          hệ</a>
       </div>
     </div>
   </section>
